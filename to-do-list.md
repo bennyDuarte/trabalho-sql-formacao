@@ -1,7 +1,7 @@
 # Falta definir
 Adicionar tipos de produtos
 
-Bobines de indutância
+ Bobines de indutância
 Circuitos Integrados 
 Condensadores
 Cristais
@@ -19,3 +19,7 @@ transistores
 triacs
 ventoinhas
 PCBs
+
+Ruben - Produtos
+Carlos - Marcas
+Rosa - Clientes e Colaboradores
