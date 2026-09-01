@@ -1,4 +1,3 @@
-DROP DATABASE LojaComponentes;
 CREATE DATABASE LojaComponentes;
 USE LojaComponentes;
 
@@ -33,3 +32,22 @@ descricao VARCHAR(500),
 preco DOUBLE,
 dimensoes VARCHAR(100)
 );
+
+INSERT INTO tipoproduto(idtipo,nome) VALUES (1, 'Bobines de indutância');
+INSERT INTO tipoproduto(idtipo,nome) VALUES (2, 'Circuitos Integrados');
+INSERT INTO tipoproduto(idtipo,nome) VALUES (3, 'Condensadores');
+INSERT INTO tipoproduto(idtipo,nome) VALUES (4, 'Cristais');
+INSERT INTO tipoproduto(idtipo,nome) VALUES (5, 'Cabos');
+INSERT INTO tipoproduto(idtipo,nome) VALUES (6, 'Diodos');
+INSERT INTO tipoproduto(idtipo,nome) VALUES (7, 'Fichas');
+INSERT INTO tipoproduto(idtipo,nome) VALUES (8, 'Filtros');
+INSERT INTO tipoproduto(idtipo,nome) VALUES (9, 'Fio para Bobinagem');
+INSERT INTO tipoproduto(idtipo,nome) VALUES (10, 'Lâmpadas');
+INSERT INTO tipoproduto(idtipo,nome) VALUES (11, 'LEDs');
+INSERT INTO tipoproduto(idtipo,nome) VALUES (12, 'Resistências');
+INSERT INTO tipoproduto(idtipo,nome) VALUES (13, 'Termocondutores');
+INSERT INTO tipoproduto(idtipo,nome) VALUES (14, 'Tiristores');
+INSERT INTO tipoproduto(idtipo,nome) VALUES (15, 'Transistores');
+INSERT INTO tipoproduto(idtipo,nome) VALUES (16, 'Triacs');
+INSERT INTO tipoproduto(idtipo,nome) VALUES (17, 'Ventoinhas');
+INSERT INTO tipoproduto(idtipo,nome) VALUES (18, 'PCBs');
