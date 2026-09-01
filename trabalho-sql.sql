@@ -8,6 +8,7 @@ datanascimento date,
 morada VARCHAR(200),
 ncontribuinte INT UNIQUE
 );
+
 CREATE TABLE cliente(
 idcliente INT PRIMARY KEY AUTO_INCREMENT,
 nome VARCHAR(100),
@@ -15,15 +16,18 @@ datanascimento date,
 morada VARCHAR(200),
 ncontribuinte INT UNIQUE
 );
+
 CREATE TABLE tipoproduto(
 idtipo INT PRIMARY KEY AUTO_INCREMENT,
 nome VARCHAR(100)
 );
+
 CREATE TABLE marcas(
 idmarca INT PRIMARY KEY AUTO_INCREMENT,
 morada VARCHAR(200),
 numerofiscal INT UNIQUE
 );
+
 CREATE TABLE produto(
 idproduto INT PRIMARY KEY AUTO_INCREMENT,
 numreferencia INT UNIQUE,
@@ -33,6 +37,7 @@ preco DOUBLE,
 dimensoes VARCHAR(100)
 );
 
+/* INSERÇÃO DE TIPOS DE PRODUTOS */
 INSERT INTO tipoproduto(idtipo,nome) VALUES (1, 'Bobines de indutância');
 INSERT INTO tipoproduto(idtipo,nome) VALUES (2, 'Circuitos Integrados');
 INSERT INTO tipoproduto(idtipo,nome) VALUES (3, 'Condensadores');
@@ -51,3 +56,4 @@ INSERT INTO tipoproduto(idtipo,nome) VALUES (15, 'Transistores');
 INSERT INTO tipoproduto(idtipo,nome) VALUES (16, 'Triacs');
 INSERT INTO tipoproduto(idtipo,nome) VALUES (17, 'Ventoinhas');
 INSERT INTO tipoproduto(idtipo,nome) VALUES (18, 'PCBs');
+/* FIM DE INSERÇÃO DE TIPOS DE PRODUTO */
