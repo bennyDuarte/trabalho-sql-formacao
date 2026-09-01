@@ -59,6 +59,6 @@ INSERT INTO tipoproduto(idtipo,nome) VALUES (15, 'Transistores');
 INSERT INTO tipoproduto(idtipo,nome) VALUES (16, 'Triacs');
 INSERT INTO tipoproduto(idtipo,nome) VALUES (17, 'Ventoinhas');
 INSERT INTO tipoproduto(idtipo,nome) VALUES (18, 'PCBs');
-/* FIM DE INSERÇÃO DE TIPOS DE PRODUTO */
+/* FIM DE INSERÇÃO DE TIPOS DE PRODUTO --------*/
 
 SHOW TABLES;
