@@ -22,5 +22,14 @@ nome VARCHAR(100)
 );
 CREATE TABLE marcas(
 idmarca INT PRIMARY KEY AUTO_INCREMENT,
-morada VARCHAR(200)
+morada VARCHAR(200),
+numerofiscal INT UNIQUE
+);
+CREATE TABLE produto(
+idproduto INT PRIMARY KEY AUTO_INCREMENT,
+numreferencia INT UNIQUE,
+nome VARCHAR(100),
+descricao VARCHAR(500),
+preco DOUBLE,
+dimensoes VARCHAR(100)
 );
