@@ -1,8 +1,9 @@
+DROP DATABASE LojaComponentes;
 CREATE DATABASE LojaComponentes;
 USE LojaComponentes;
 
 CREATE TABLE colaboradores(
-idcol INT PRIMARY KEY AUTO_INCREMENT,
+idcol INT PRIMARY KEY AUTO_INCREMENT UNIQUE,
 nome VARCHAR(100),
 datanascimento date,
 morada VARCHAR(200),
@@ -10,7 +11,7 @@ ncontribuinte INT UNIQUE
 );
 
 CREATE TABLE cliente(
-idcliente INT PRIMARY KEY AUTO_INCREMENT,
+idcliente INT PRIMARY KEY AUTO_INCREMENT UNIQUE,
 nome VARCHAR(100),
 datanascimento date,
 morada VARCHAR(200),
@@ -18,23 +19,25 @@ ncontribuinte INT UNIQUE
 );
 
 CREATE TABLE tipoproduto(
-idtipo INT PRIMARY KEY AUTO_INCREMENT,
+idtipo INT PRIMARY KEY AUTO_INCREMENT UNIQUE,
 nome VARCHAR(100)
 );
 
 CREATE TABLE marcas(
-idmarca INT PRIMARY KEY AUTO_INCREMENT,
+idmarca INT PRIMARY KEY AUTO_INCREMENT UNIQUE,
 morada VARCHAR(200),
 numerofiscal INT UNIQUE
 );
 
 CREATE TABLE produto(
-idproduto INT PRIMARY KEY AUTO_INCREMENT,
+idproduto INT PRIMARY KEY AUTO_INCREMENT UNIQUE,
 numreferencia INT UNIQUE,
 nome VARCHAR(100),
 descricao VARCHAR(500),
 preco DOUBLE,
-dimensoes VARCHAR(100)
+dimensoes VARCHAR(100),
+idtipo INT, FOREIGN KEY (idtipo) REFERENCES tipoproduto(idtipo),
+idmarca INT, FOREIGN KEY (idmarca) REFERENCES marcas(idmarca)
 );
 
 /* INSERÇÃO DE TIPOS DE PRODUTOS */
@@ -57,3 +60,5 @@ INSERT INTO tipoproduto(idtipo,nome) VALUES (16, 'Triacs');
 INSERT INTO tipoproduto(idtipo,nome) VALUES (17, 'Ventoinhas');
 INSERT INTO tipoproduto(idtipo,nome) VALUES (18, 'PCBs');
 /* FIM DE INSERÇÃO DE TIPOS DE PRODUTO */
+
+SHOW TABLES;
