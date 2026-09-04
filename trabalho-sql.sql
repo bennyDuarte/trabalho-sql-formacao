@@ -61,6 +61,10 @@ INSERT INTO tipoproduto(idtipo,nome) VALUES (17, 'Ventoinhas');
 INSERT INTO tipoproduto(idtipo,nome) VALUES (18, 'PCBs');
 /* FIM DE INSERÇÃO DE TIPOS DE PRODUTO --------*/
 
+/* INSERÇÃO DAS MARCAS - CARLOS */
+
+/* FIM DE INSERÇÃO DAS MARCAS */
+
 /* INSERÇÃO DE CLIENTES - Rosa */
 
 /* FIM DE INSERÇÃO DE CLIENTES */
