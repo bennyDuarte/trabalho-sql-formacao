@@ -41,24 +41,25 @@ idmarca INT, FOREIGN KEY (idmarca) REFERENCES marcas(idmarca)
 );
 
 /* INSERÇÃO DE TIPOS DE PRODUTOS */
-INSERT INTO tipoproduto(idtipo,nome) VALUES (1, 'Bobines de indutância');
-INSERT INTO tipoproduto(idtipo,nome) VALUES (2, 'Circuitos Integrados');
-INSERT INTO tipoproduto(idtipo,nome) VALUES (3, 'Condensadores');
-INSERT INTO tipoproduto(idtipo,nome) VALUES (4, 'Cristais');
-INSERT INTO tipoproduto(idtipo,nome) VALUES (5, 'Cabos');
-INSERT INTO tipoproduto(idtipo,nome) VALUES (6, 'Diodos');
-INSERT INTO tipoproduto(idtipo,nome) VALUES (7, 'Fichas');
-INSERT INTO tipoproduto(idtipo,nome) VALUES (8, 'Filtros');
-INSERT INTO tipoproduto(idtipo,nome) VALUES (9, 'Fio para Bobinagem');
-INSERT INTO tipoproduto(idtipo,nome) VALUES (10, 'Lâmpadas');
-INSERT INTO tipoproduto(idtipo,nome) VALUES (11, 'LEDs');
-INSERT INTO tipoproduto(idtipo,nome) VALUES (12, 'Resistências');
-INSERT INTO tipoproduto(idtipo,nome) VALUES (13, 'Termocondutores');
-INSERT INTO tipoproduto(idtipo,nome) VALUES (14, 'Tiristores');
-INSERT INTO tipoproduto(idtipo,nome) VALUES (15, 'Transistores');
-INSERT INTO tipoproduto(idtipo,nome) VALUES (16, 'Triacs');
-INSERT INTO tipoproduto(idtipo,nome) VALUES (17, 'Ventoinhas');
-INSERT INTO tipoproduto(idtipo,nome) VALUES (18, 'PCBs');
+INSERT INTO tipoproduto(idtipo,nome) VALUES 
+(1, 'Bobines de indutância'),
+(2, 'Circuitos Integrados'),
+(3, 'Condensadores'),
+(4, 'Cristais'),
+(5, 'Cabos'),
+(6, 'Diodos'),
+(7, 'Fichas'),
+(8, 'Filtros'),
+(9, 'Fio para Bobinagem'),
+(10, 'Lâmpadas'),
+(11, 'LEDs'),
+(12, 'Resistências'),
+(13, 'Termocondutores'),
+(14, 'Tiristores'),
+(15, 'Transistores'),
+(16, 'Triacs'),
+(17, 'Ventoinhas');,
+(18, 'PCBs');
 /* FIM DE INSERÇÃO DE TIPOS DE PRODUTO --------*/
 
 /* INSERÇÃO DAS MARCAS - CARLOS */
