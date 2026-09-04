@@ -2,6 +2,18 @@ DROP DATABASE LojaComponentes;
 CREATE DATABASE LojaComponentes;
 USE LojaComponentes;
 
+CREATE TABLE categoria(
+idcat INT PRIMARY KEY AUTO_INCREMENT UNIQUE,
+nomecat VARCHAR (200)
+);
+
+CREATE TABLE marcas(
+idmarca INT PRIMARY KEY AUTO_INCREMENT UNIQUE,
+nomemarca VARCHAR (200),
+morada VARCHAR(200),
+numerofiscal INT UNIQUE
+);
+
 CREATE TABLE colaboradores(
 idcol INT PRIMARY KEY AUTO_INCREMENT UNIQUE,
 nome VARCHAR(100),
@@ -18,30 +30,26 @@ morada VARCHAR(200),
 ncontribuinte INT UNIQUE
 );
 
-CREATE TABLE tipoproduto(
+CREATE TABLE tipoproduto_eletronica(
 idtipo INT PRIMARY KEY AUTO_INCREMENT UNIQUE,
-nome VARCHAR(100)
+nome VARCHAR(100),
+idcategoria INT, FOREIGN KEY(idcategoria) REFERENCES categoria(idcat)
 );
 
-CREATE TABLE marcas(
-idmarca INT PRIMARY KEY AUTO_INCREMENT UNIQUE,
-morada VARCHAR(200),
-numerofiscal INT UNIQUE
-);
-
-CREATE TABLE produto(
+CREATE TABLE produto_eletronica(
 idproduto INT PRIMARY KEY AUTO_INCREMENT UNIQUE,
 numreferencia INT UNIQUE,
 nome VARCHAR(100),
 descricao VARCHAR(500),
 preco DOUBLE,
 dimensoes VARCHAR(100),
-idtipo INT, FOREIGN KEY (idtipo) REFERENCES tipoproduto(idtipo),
+idcategoria INT, FOREIGN KEY (idcategoria) REFERENCES categoria(idcat),
+idtipo INT, FOREIGN KEY (idtipo) REFERENCES tipoproduto_eletronica(idtipo),
 idmarca INT, FOREIGN KEY (idmarca) REFERENCES marcas(idmarca)
 );
 
-/* INSERÇÃO DE TIPOS DE PRODUTOS */
-INSERT INTO tipoproduto(idtipo,nome) VALUES 
+/* INSERÇÃO DE TIPOS DE PRODUTOS - Eletronica */
+INSERT INTO tipoproduto_eletronica(idtipo,nome) VALUES 
 (1, 'Bobines de indutância'),
 (2, 'Circuitos Integrados'),
 (3, 'Condensadores'),
@@ -58,7 +66,7 @@ INSERT INTO tipoproduto(idtipo,nome) VALUES
 (14, 'Tiristores'),
 (15, 'Transistores'),
 (16, 'Triacs'),
-(17, 'Ventoinhas');,
+(17, 'Ventoinhas'),
 (18, 'PCBs');
 /* FIM DE INSERÇÃO DE TIPOS DE PRODUTO --------*/
 
