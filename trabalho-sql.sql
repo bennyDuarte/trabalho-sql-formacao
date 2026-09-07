@@ -151,7 +151,8 @@ idcategoria INT, FOREIGN KEY(idcategoria) REFERENCES categoria(idcat)
 );
 /* INSERÇÃO DE TIPOS DE PRODUTOS - Automovel */
 INSERT INTO tipoproduto_auto(nome) VALUES
-('Diagnostico ODB');
+('Diagnostico ODB'),
+('Outros');
 
 /* FIM DE INSERÇÃO DE TIPOS DE PRODUTO - Automovel */
 
@@ -169,7 +170,8 @@ idmarca INT, FOREIGN KEY (idmarca) REFERENCES marcas(idmarca)
 
 /* INSERÇÃO DE PRODUTOS - AUTOMÓVEL - Ruben */
 INSERT INTO produto_auto(nome,descricao,preco,dimensoes,idcategoria,idtipo,idmarca) VALUES
-('AMiO - Interface de diagnóstico compacto Bluetooth OBD2 / CAN - v2.2', 'interface de diagnóstico', '5.51', '25x25x25', '1', '1', "1");
+('AMiO - Interface de diagnóstico compacto Bluetooth OBD2 / CAN - v2.2', 'interface de diagnóstico', '5.51', '25x25x25', '1', '1', '1'),
+('K2 Lamp Protect - Kit revestimento de proteção para faróis (selante de faróis)', 'K2 LAMP PROTECT é uma solução de proteção de longa duração', '7.95', '50x50x25', '2', '2', '2');
 /* FIM DE INSERÇÃO DE PRODUTOS - AUTOMÓVEL */
 /* FIM DA AUTOMOVEL */
 /* -------------------------------------------------------------------------------------------------------- */
