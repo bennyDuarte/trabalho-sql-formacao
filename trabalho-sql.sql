@@ -29,10 +29,10 @@ numerofiscal INT UNIQUE
 );
 
 /* INSERÇÃO DAS MARCAS - CARLOS, RUBEN, ROSA */
-/* ELETRONICA */
+/* ELETRONICA - CARLOS */
 
-/* --------- */
-/* AUTOMOVEL */
+/* ---------- - ------ */
+/* AUTOMOVEL - RUBEN */
 INSERT INTO marcas(idmarca,nomemarca,morada,numerofiscal)VALUES
 ("0001", 'AMiO', 'POLONIA', '0000001'),
 ("0002", 'K2', 'ESTADOS UNIDOS', '0000002'),
@@ -41,10 +41,10 @@ INSERT INTO marcas(idmarca,nomemarca,morada,numerofiscal)VALUES
 ("0005", 'ELTA', 'REINO UNIDO', '0000005'),
 ("0006", 'EcoFlow', 'ESTADOS UNIDOS', '0000006'),
 ("0007", 'Högert', 'ALEMANHA', '0000007');
-/* --------- */
-/* DOMOTICA */
+/* --------- - -----  */
+/* DOMOTICA - ROSA */
 
-/* ------- */
+/* -------- - ---- */
 
 
 /* FIM DE INSERÇÃO DAS MARCAS */
