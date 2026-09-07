@@ -16,10 +16,10 @@ nomecat VARCHAR (200)
 
 /* INSERÇÃO DE CATEGORIAS */
 INSERT INTO categoria(idcat,nomecat) VALUES
-('1' ,'ELETRONICA'),
-('2', 'AUTOMOVEL'),
-('3', 'DOMOTICA'),
-('4', 'BATERIAS');
+(1 ,'ELETRONICA'),
+(2, 'AUTOMOVEL'),
+(3, 'DOMOTICA'),
+(4, 'BATERIAS');
 /* -------- -- ---------- */
 
 /* MARCAS */
@@ -36,13 +36,13 @@ numerofiscal INT UNIQUE
 /* ---------- - ------ */
 /* AUTOMOVEL - RUBEN */
 INSERT INTO marcas(idmarca,nomemarca,morada,numerofiscal)VALUES
-("0001", 'AMiO', 'POLONIA', '0000001'),
-("0002", 'K2', 'ESTADOS UNIDOS', '0000002'),
-("0003", 'TE Connectivity', 'IRLANDA', '0000003'),
-("0004", 'TE DEUTSCH', 'ALEMANHA', '0000004'),
-("0005", 'ELTA', 'REINO UNIDO', '0000005'),
-("0006", 'EcoFlow', 'ESTADOS UNIDOS', '0000006'),
-("0007", 'Högert', 'ALEMANHA', '0000007');
+(0001, 'AMiO', 'POLONIA', '0000001'),
+(0002, 'K2', 'ESTADOS UNIDOS', '0000002'),
+(0003, 'TE Connectivity', 'IRLANDA', '0000003'),
+(0004, 'TE DEUTSCH', 'ALEMANHA', '0000004'),
+(0005, 'ELTA', 'REINO UNIDO', '0000005'),
+(0006, 'EcoFlow', 'ESTADOS UNIDOS', '0000006'),
+(0007, 'Högert', 'ALEMANHA', '0000007');
 /* --------- - -----  */
 /* DOMOTICA - ROSA */
 
@@ -150,14 +150,14 @@ nome VARCHAR(100),
 idcategoria INT, FOREIGN KEY(idcategoria) REFERENCES categoria(idcat)
 );
 /* INSERÇÃO DE TIPOS DE PRODUTOS - Automovel */
-INSERT INTO tipoproduto_auto(nome) VALUES
-('Diagnostico ODB'),
-('Outros'),
-('Superseal 1.5 (estanques)'),
-('Terminais fêmea'),
-('Presença e Sinalização'),
-('Power Station'),
-('Cabos para bateria');
+INSERT INTO tipoproduto_auto(nome, idcategoria) VALUES
+('Diagnostico ODB', 2),
+('Outros', 2),
+('Superseal 1.5 (estanques)', 2),
+('Terminais fêmea', 2),
+('Presença e Sinalização', 2),
+('Power Station', 2),
+('Cabos para bateria', 2);
 /* FIM DE INSERÇÃO DE TIPOS DE PRODUTO - Automovel */
 
 CREATE TABLE produto_auto(
@@ -191,6 +191,19 @@ idtipo INT PRIMARY KEY AUTO_INCREMENT,
 nome VARCHAR(100),
 idcategoria INT, FOREIGN KEY(idcategoria) REFERENCES categoria(idcat)
 );
+INSERT INTO tipoproduto_domo (nome,idcategoria)VALUES
+ ('Tomada intelegente', 3),
+ ('Modulo interruptor', 3),
+ ('interruptor intelegemte', 3), 
+ ('Tomada intelegente', 3),
+ ('Modulo interruptor para automaçao', 3),
+ ('Modulo medidor', 3),
+ ('Computador', 3),
+ ('Mtgud', 3),
+ ('Modulo medidor de consumo trifasico', 3),
+ ('Rule Modulo Shelly proq3em', 3),
+ ('50A ct modulo medidor de consumo duplo', 3),
+ ('medidor consumo trafico Wifi c/3', 3);
 
 CREATE TABLE produto_domo(
 idproduto INT PRIMARY KEY AUTO_INCREMENT,
