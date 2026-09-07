@@ -2,7 +2,8 @@
 /*												TRABALHO DE SQL - UC02830														 */
 /*								 DESENVOLVIDO POR RUBEN DUARTE, CARLOS GOMES E ROSA BORGES										 */
 /*																																 */
-DROP DATABASE IF EXISTS LojaComponentes;
+
+DROP DATABASE IF EXISTS LojaComponentes; /* -> Verifica se existe a base de dados, caso exista, é eliminada */
 CREATE DATABASE LojaComponentes;
 USE LojaComponentes;
 
@@ -11,6 +12,7 @@ CREATE TABLE categoria(
 idcat INT PRIMARY KEY AUTO_INCREMENT,
 nomecat VARCHAR (200)
 );
+/* ------- --- ------- ---- */
 
 /* INSERÇÃO DE CATEGORIAS */
 INSERT INTO categoria(idcat,nomecat) VALUES
@@ -18,7 +20,7 @@ INSERT INTO categoria(idcat,nomecat) VALUES
 ('2', 'AUTOMOVEL'),
 ('3', 'DOMOTICA'),
 ('4', 'BATERIAS');
-/* ---------------------- */
+/* -------- -- ---------- */
 
 /* MARCAS */
 CREATE TABLE marcas(
@@ -45,8 +47,6 @@ INSERT INTO marcas(idmarca,nomemarca,morada,numerofiscal)VALUES
 /* DOMOTICA - ROSA */
 
 /* -------- - ---- */
-
-
 /* FIM DE INSERÇÃO DAS MARCAS */
 /* -------------------------------------------------------------------------------------------------------- */
 
