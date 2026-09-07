@@ -33,8 +33,8 @@ ncontribuinte INT UNIQUE
 );
 /* INSERÇÃO DE COLABORADORES - Rosa */
 INSERT INTO colaboradores (nome,datanascimento,morada,ncontribuinte)VALUES
-('Ana Julia', '1987-07-24', 'coimbra' ,  '12345875'),
-('Maria Amelia', '1988-01-7',  'lisboa','13457588'),
+('Ana Julia', '1987-07-24', 'Coimbra',  '12345875'),
+('Maria Amelia', '1988-01-7',  'Lisboa','13457588'),
 ('Paula Esteves', '1975-06-17',' Mafra', '14470764'),
 ('Teresa Chaves', '1975-05-10','Rua 25-de Abril', '1777810'),
 ('Rosa Neves', '1995-08-16', 'Rua monte abraao','1227689'),
@@ -54,7 +54,7 @@ ncontribuinte INT UNIQUE
 
 /* INSERÇÃO DE CLIENTES - Rosa */
 INSERT INTO cliente(nome, datanascimento,morada,ncontribuinte)VALUES
-('Antonio Vaz', '1950-01-1', 'Aveiro' ,  '12345822'),
+('Antonio Vaz', '1950-01-1', 'Aveiro',  '12345822'),
 ('Marcelo Texeira', '1960-03-4',  'Braga','13457588'),
 ('Marlene Chaves', '1964-06-14',' Viseu', '14470711'),
 ('Marcela Nuno', '1944-07-11','Rua 19-de Abril', '1777810'),
@@ -63,7 +63,7 @@ INSERT INTO cliente(nome, datanascimento,morada,ncontribuinte)VALUES
 ('Ruben Tavares', '1981-05-29','Rua Avida-Brasil', '1397732'),
 ('Neves Daniel', '1984-09-24', 'Rua Perigrino','1786533'),
 ('Ana Luisa', '1932-02-11', 'Rua Barcelona', '1765906'),
-('Pereira Marcio','1958-09-04', 'Rua  Moçabique','1644017'),
+('Pereira Marcio','1958-09-04', 'Rua Moçabique','1644017'),
 ('Aguiar Mendes', '1976-08-07',  'Rua Belgica','1945219'),
 ('Merico Trindade','1970-07-11', 'Rua Benguela','1001876');
 /* FIM DE INSERÇÃO DE CLIENTES */
