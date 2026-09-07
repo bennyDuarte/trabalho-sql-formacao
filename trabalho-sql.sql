@@ -1,6 +1,6 @@
 /*																																 */
 /*												TRABALHO DE SQL - UC02830														 */
-/* DESENVOLVIDO POR RUBEN DUARTE, CARLOS GOMES E ROSA BORGES																	 */
+/*								 DESENVOLVIDO POR RUBEN DUARTE, CARLOS GOMES E ROSA BORGES										 */
 DROP DATABASE LojaComponentes;
 CREATE DATABASE LojaComponentes;
 USE LojaComponentes;
