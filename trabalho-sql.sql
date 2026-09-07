@@ -1,3 +1,6 @@
+/*																																 */
+/*												TRABALHO DE SQL - UC02830														 */
+/* DESENVOLVIDO POR RUBEN DUARTE, CARLOS GOMES E ROSA BORGES																	 */
 DROP DATABASE LojaComponentes;
 CREATE DATABASE LojaComponentes;
 USE LojaComponentes;
@@ -8,6 +11,7 @@ idcat INT PRIMARY KEY AUTO_INCREMENT UNIQUE,
 nomecat VARCHAR (200)
 );
 
+/* MARCAS */
 CREATE TABLE marcas(
 idmarca INT PRIMARY KEY AUTO_INCREMENT UNIQUE,
 nomemarca VARCHAR (200),
@@ -34,9 +38,9 @@ INSERT INTO colaboradores (nome,datanascimento,morada,ncontribuinte)VALUES
 ('Paula Esteves', '1975-06-17',' Mafra', '14470764'),
 ('Teresa Chaves', '1975-05-10','Rua 25-de Abril', '1777810'),
 ('Rosa Neves', '1995-08-16', 'Rua monte abraao','1227689'),
-('Carlos  Gomes','1981-11-15','Rua da Anogola','1495790'),
+('Carlos Gomes','1981-11-15','Rua da Anogola','1495790'),
 ('Ruben Sousa', '1987-06-30','Rua Pregritos', '1397732'),
-('Marcos Dniel', '1977-12-24', 'Rua Njinga','1786543');
+('Marcos Daniel', '1977-12-24', 'Rua Njinga','1786543');
 /* FIM DE INSERÇÃO DE COLABORADORES */
 /* -------------------------------------------------------------------------------------------------------- */
 
@@ -55,11 +59,11 @@ INSERT INTO cliente(nome, datanascimento,morada,ncontribuinte)VALUES
 ('Marlene Chaves', '1964-06-14',' Viseu', '14470711'),
 ('Marcela Nuno', '1944-07-11','Rua 19-de Abril', '1777810'),
 ('Lucia Neves', '1975-04-28', 'Rua Olivaça','12276801'),
-('Novoes  Mendes','1945-05-9','Rua da Alemanha','1495722'),
+('Novoes Mendes','1945-05-9','Rua da Alemanha','1495722'),
 ('Ruben Tavares', '1981-05-29','Rua Avida-Brasil', '1397732'),
 ('Neves Dniel', '1984-09-24', 'Rua Perigrino','1786533'),
 ('Ana Luisa', '1932-02-11', 'Rua Barcelona', '1765906'),
-('Perreira Marcio','1958-09-04', 'Rua  Moçabique','1644017'),
+('Pereira Marcio','1958-09-04', 'Rua  Moçabique','1644017'),
 ('Aguiar Mendes', '1976-08-07',  'Rua Belgica','1945219'),
 ('Merico Trindade','1970-07-11', 'Rua Benguela','1001876');
 /* FIM DE INSERÇÃO DE CLIENTES */
@@ -131,6 +135,10 @@ idcategoria INT, FOREIGN KEY (idcategoria) REFERENCES categoria(idcat),
 idtipo INT, FOREIGN KEY (idtipo) REFERENCES tipoproduto_auto(idtipo),
 idmarca INT, FOREIGN KEY (idmarca) REFERENCES marcas(idmarca)
 );
+
+/* INSERÇÃO DE PRODUTOS - AUTOMÓVEL - Ruben */
+
+/* FIM DE INSERÇÃO DE PRODUTOS - AUTOMÓVEL */
 /* FIM DA AUTOMOVEL */
 /* -------------------------------------------------------------------------------------------------------- */
 
@@ -152,8 +160,11 @@ idcategoria INT, FOREIGN KEY (idcategoria) REFERENCES categoria(idcat),
 idtipo INT, FOREIGN KEY (idtipo) REFERENCES tipoproduto_domo(idtipo),
 idmarca INT, FOREIGN KEY (idmarca) REFERENCES marcas(idmarca)
 );
-/* FIM DA DOMOTICA */
 
+/* INSERÇÃO DE PRODUTOS - DOMÓTICA - Ruben */
+
+/* FIM DE INSERÇÃO DE PRODUTOS - DOMÓTICA */
+/* FIM DA DOMOTICA */
 /* -------------------------------------------------------------------------------------------------------- */
 
 /* BATERIAS */
@@ -174,7 +185,11 @@ idcategoria INT, FOREIGN KEY (idcategoria) REFERENCES categoria(idcat),
 idtipo INT, FOREIGN KEY (idtipo) REFERENCES tipoproduto_bat(idtipo),
 idmarca INT, FOREIGN KEY (idmarca) REFERENCES marcas(idmarca)
 );
-/* FIM DA DOMOTICA */
+
+/* INSERÇÃO DE PRODUTOS - BATERIAS - Ruben */
+
+/* FIM DE INSERÇÃO DE PRODUTOS - BATERIAS */
+/* FIM DA BATERIAS */
 /* -------------------------------------------------------------------------------------------------------- */
 
 SHOW TABLES;
