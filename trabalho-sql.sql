@@ -161,7 +161,7 @@ INSERT INTO tipoproduto_eletro(nome) VALUES
 
 CREATE TABLE produto_eletro(
 idproduto INT PRIMARY KEY AUTO_INCREMENT,
-numreferencia BIGINT UNIQUE,
+numreferencia VARCHAR(20) UNIQUE,
 nome VARCHAR(100),
 descricao VARCHAR(500),
 preco DECIMAL(10,2),
@@ -195,7 +195,7 @@ INSERT INTO tipoproduto_auto(nome) VALUES
 
 CREATE TABLE produto_auto(
 idproduto INT PRIMARY KEY AUTO_INCREMENT,
-numreferencia BIGINT UNIQUE NULL,
+numreferencia VARCHAR(20) UNIQUE NULL,
 nome VARCHAR(100),
 descricao VARCHAR(500),
 preco DECIMAL(10,2),
@@ -238,7 +238,7 @@ INSERT INTO tipoproduto_domo (nome) VALUES
 
 CREATE TABLE produto_domo(
 idproduto INT PRIMARY KEY AUTO_INCREMENT,
-numreferencia BIGINT UNIQUE,
+numreferencia VARCHAR(20) UNIQUE NULL,
 nome VARCHAR(100),
 descricao VARCHAR(500),
 preco DECIMAL(10,2),
@@ -265,7 +265,7 @@ idcategoria INT DEFAULT 4, FOREIGN KEY(idcategoria) REFERENCES categoria(idcat)
 /* -------- -- ---- -- -------- - -------- */
 CREATE TABLE produto_bat(
 idproduto INT PRIMARY KEY AUTO_INCREMENT,
-numreferencia BIGINT UNIQUE,
+numreferencia VARCHAR(20) UNIQUE NULL,
 nome VARCHAR(100),
 descricao VARCHAR(500),
 preco DOUBLE,
