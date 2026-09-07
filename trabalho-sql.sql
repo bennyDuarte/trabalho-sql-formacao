@@ -177,10 +177,10 @@ INSERT INTO produto_auto(nome,descricao,preco,dimensoes,idcategoria,idtipo,idmar
 ('AMiO - Interface de diagnóstico compacto Bluetooth OBD2 / CAN - v2.2', 'interface de diagnóstico', '5.51', '25x25x25', '2', '1', '0001'),
 ('K2 Lamp Protect - Kit revestimento de proteção para faróis (selante de faróis)', 'K2 LAMP PROTECT é uma solução de proteção de longa duração', '7.95', '50x50x25', '2', '2', '0002'),
 ('TE Deutsch 1062-16-0122 - Terminal fêmea para fichas Deutsch Size 16 (0.75...2mm²)', 'Tamanho do terminal: 16', '0.59', '50x50x25', '2', '3', '0003'),
-('TE Connectivity 183024-1 - Terminal macho para ficha AMP macho para fio 0.75..1.5mm² 14A', 'Tipo de conector: terminal macho para fichas AMP Superseal 1.5 macho', '0.18', '22.75x1.5', '2', '3', '0003'),
-('ELTA EB0380TB - Lâmpada BAY15d P21/5W 12V', 'Tipo de lâmpada: para automóveis', '0.65', '22.75x1.5', '2', '4', '0004'),
-('EcoFlow Delta 3 Max Plus - Power Station 3000W 2048Wh (expansível) c/ bateria LFP de 10 anos e App', 'A EcoFlow DELTA 3 Max Plus redefine o conceito de energia portátil', '0.65', '22.75x1.5', '2', '5', '0005'),
-('Högert HT8G602 - Cabos de arranque de bateria p/ automóvel 600A - 3,5m', 'Comprimento: 3,5m', '14.70', '3 metros', '2', '6', '0006');
+('TE Connectivity 183024-1 - Terminal macho para ficha AMP macho para fio 0.75..1.5mm² 14A', 'Tipo de conector: terminal macho para fichas AMP Superseal 1.5 macho', '0.18', '22.75x1.5', '2', '3', '0004'),
+('ELTA EB0380TB - Lâmpada BAY15d P21/5W 12V', 'Tipo de lâmpada: para automóveis', '0.65', '22.75x1.5', '2', '4', '0005'),
+('EcoFlow Delta 3 Max Plus - Power Station 3000W 2048Wh (expansível) c/ bateria LFP de 10 anos e App', 'A EcoFlow DELTA 3 Max Plus redefine o conceito de energia portátil', '0.65', '22.75x1.5', '2', '5', '0006'),
+('Högert HT8G602 - Cabos de arranque de bateria p/ automóvel 600A - 3,5m', 'Comprimento: 3,5m', '14.70', '3 metros', '2', '6', '0007');
 /* FIM DE INSERÇÃO DE PRODUTOS - AUTOMÓVEL */
 /* FIM DA AUTOMOVEL */
 /* -------------------------------------------------------------------------------------------------------- */
