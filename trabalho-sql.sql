@@ -1,6 +1,7 @@
 /*																																 */
 /*												TRABALHO DE SQL - UC02830														 */
 /*								 DESENVOLVIDO POR RUBEN DUARTE, CARLOS GOMES E ROSA BORGES										 */
+/*																																 */
 DROP DATABASE LojaComponentes;
 CREATE DATABASE LojaComponentes;
 USE LojaComponentes;
@@ -19,7 +20,17 @@ morada VARCHAR(200),
 numerofiscal INT UNIQUE
 );
 
-/* INSERÇÃO DAS MARCAS - CARLOS */
+/* INSERÇÃO DAS MARCAS - CARLOS, RUBEN, ROSA */
+/* ELETRONICA */
+
+/* --------- */
+/* AUTOMOVEL */
+
+/* --------- */
+/* DOMOTICA */
+
+/* ------- */
+
 
 /* FIM DE INSERÇÃO DAS MARCAS */
 /* -------------------------------------------------------------------------------------------------------- */
