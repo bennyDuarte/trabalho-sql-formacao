@@ -61,7 +61,7 @@ INSERT INTO cliente(nome, datanascimento,morada,ncontribuinte)VALUES
 ('Lucia Neves', '1975-04-28', 'Rua Olivaça','12276801'),
 ('Novoes Mendes','1945-05-9','Rua da Alemanha','1495722'),
 ('Ruben Tavares', '1981-05-29','Rua Avida-Brasil', '1397732'),
-('Neves Dniel', '1984-09-24', 'Rua Perigrino','1786533'),
+('Neves Daniel', '1984-09-24', 'Rua Perigrino','1786533'),
 ('Ana Luisa', '1932-02-11', 'Rua Barcelona', '1765906'),
 ('Pereira Marcio','1958-09-04', 'Rua  Moçabique','1644017'),
 ('Aguiar Mendes', '1976-08-07',  'Rua Belgica','1945219'),
