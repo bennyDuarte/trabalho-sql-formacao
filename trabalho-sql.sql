@@ -52,17 +52,16 @@ INSERT INTO marcas (nomemarca,morada,numerofiscal)VALUES
 ('Fairchild','Fairchild Corporation 201 Flynn Road Camarillo, California 93012 USA', '852018960'),
 ('STMicroelectronics','STMicroelectronics Corporation 201 Flynn Road Camarillo, California 93012 USA', '852018460'),
 ('STMicroelectronics','STMicroelectronics Corporation 201 Flynn Road Camarillo, California 93012 USA', '853015960'),
-('Arrow Electronics','Arrow Electronics Corporation 201 Flynn Road Camarillo, California 93012 USA', '455017960');
+('Arrow Electronics','Arrow Electronics Corporation 201 Flynn Road Camarillo, California 93012 USA', '455017960'),
 /* ---------- - ------ */
 /* AUTOMOVEL - RUBEN */
-INSERT INTO marcas(idmarca,nomemarca,morada,numerofiscal)VALUES
-(0001, 'AMiO', 'POLONIA', '0000001'),
-(0002, 'K2', 'ESTADOS UNIDOS', '0000002'),
-(0003, 'TE Connectivity', 'IRLANDA', '0000003'),
-(0004, 'TE DEUTSCH', 'ALEMANHA', '0000004'),
-(0005, 'ELTA', 'REINO UNIDO', '0000005'),
-(0006, 'EcoFlow', 'ESTADOS UNIDOS', '0000006'),
-(0007, 'Högert', 'ALEMANHA', '0000007');
+('AMiO', 'POLONIA', '0000001'),
+('K2', 'ESTADOS UNIDOS', '0000002'),
+('TE Connectivity', 'IRLANDA', '0000003'),
+('TE DEUTSCH', 'ALEMANHA', '0000004'),
+('ELTA', 'REINO UNIDO', '0000005'),
+('EcoFlow', 'ESTADOS UNIDOS', '0000006'),
+( 'Högert', 'ALEMANHA', '0000007');
 /* --------- - -----  */
 /* DOMOTICA - ROSA */
 
