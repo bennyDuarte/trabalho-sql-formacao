@@ -8,13 +8,21 @@ USE LojaComponentes;
 
 /* Tabelas sem foreign keys */
 CREATE TABLE categoria(
-idcat INT PRIMARY KEY AUTO_INCREMENT UNIQUE,
+idcat INT PRIMARY KEY AUTO_INCREMENT,
 nomecat VARCHAR (200)
 );
 
+/* INSERÇÃO DE CATEGORIAS */
+INSERT INTO categoria(nomecat) VALUES
+('ELETRONICA'),
+('AUTOMOVEL'),
+('DOMOTICA'),
+('BATERIAS');
+/* ---------------------- */
+
 /* MARCAS */
 CREATE TABLE marcas(
-idmarca INT PRIMARY KEY AUTO_INCREMENT UNIQUE,
+idmarca INT PRIMARY KEY AUTO_INCREMENT,
 nomemarca VARCHAR (200),
 morada VARCHAR(200),
 numerofiscal INT UNIQUE
@@ -25,7 +33,14 @@ numerofiscal INT UNIQUE
 
 /* --------- */
 /* AUTOMOVEL */
-
+INSERT INTO marcas(nomemarca,morada,numerofiscal)VALUES
+('AMiO', 'POLONIA', '0000001'),
+('K2', 'ESTADOS UNIDOS', '0000002'),
+('TE Connectivity', 'IRLANDA', '0000003'),
+('TE DEUTSCH', 'ALEMANHA', '0000004'),
+('ELTA', 'REINO UNIDO', '0000005'),
+('EcoFlow', 'ESTADOS UNIDOS', '0000006'),
+('Högert', 'ALEMANHA', '0000007');
 /* --------- */
 /* DOMOTICA */
 
@@ -36,7 +51,7 @@ numerofiscal INT UNIQUE
 /* -------------------------------------------------------------------------------------------------------- */
 
 CREATE TABLE colaboradores(
-idcol INT PRIMARY KEY AUTO_INCREMENT UNIQUE,
+idcol INT PRIMARY KEY AUTO_INCREMENT,
 nome VARCHAR(100),
 datanascimento date,
 morada VARCHAR(200),
@@ -56,7 +71,7 @@ INSERT INTO colaboradores (nome,datanascimento,morada,ncontribuinte)VALUES
 /* -------------------------------------------------------------------------------------------------------- */
 
 CREATE TABLE cliente(
-idcliente INT PRIMARY KEY AUTO_INCREMENT UNIQUE,
+idcliente INT PRIMARY KEY AUTO_INCREMENT,
 nome VARCHAR(100),
 datanascimento date,
 morada VARCHAR(200),
@@ -83,7 +98,7 @@ INSERT INTO cliente(nome, datanascimento,morada,ncontribuinte)VALUES
 
 /* ELETRONICA */
 CREATE TABLE tipoproduto_eletro(
-idtipo INT PRIMARY KEY AUTO_INCREMENT UNIQUE,
+idtipo INT PRIMARY KEY AUTO_INCREMENT,
 nome VARCHAR(100),
 idcategoria INT, FOREIGN KEY(idcategoria) REFERENCES categoria(idcat)
 );
@@ -111,7 +126,7 @@ INSERT INTO tipoproduto_eletro(idtipo,nome) VALUES
 /* FIM DE INSERÇÃO DE TIPOS DE PRODUTO --------*/
 
 CREATE TABLE produto_eletro(
-idproduto INT PRIMARY KEY AUTO_INCREMENT UNIQUE,
+idproduto INT PRIMARY KEY AUTO_INCREMENT,
 numreferencia INT UNIQUE,
 nome VARCHAR(100),
 descricao VARCHAR(500),
@@ -130,13 +145,18 @@ idmarca INT, FOREIGN KEY (idmarca) REFERENCES marcas(idmarca)
 
 /* AUTOMOVEL */
 CREATE TABLE tipoproduto_auto(
-idtipo INT PRIMARY KEY AUTO_INCREMENT UNIQUE,
+idtipo INT PRIMARY KEY AUTO_INCREMENT,
 nome VARCHAR(100),
 idcategoria INT, FOREIGN KEY(idcategoria) REFERENCES categoria(idcat)
 );
+/* INSERÇÃO DE TIPOS DE PRODUTOS - Automovel */
+INSERT INTO tipoproduto_auto(nome) VALUES
+('Diagnostico ODB');
+
+/* FIM DE INSERÇÃO DE TIPOS DE PRODUTO - Automovel */
 
 CREATE TABLE produto_auto(
-idproduto INT PRIMARY KEY AUTO_INCREMENT UNIQUE,
+idproduto INT PRIMARY KEY AUTO_INCREMENT,
 numreferencia INT UNIQUE,
 nome VARCHAR(100),
 descricao VARCHAR(500),
@@ -148,20 +168,21 @@ idmarca INT, FOREIGN KEY (idmarca) REFERENCES marcas(idmarca)
 );
 
 /* INSERÇÃO DE PRODUTOS - AUTOMÓVEL - Ruben */
-
+INSERT INTO produto_auto(nome,descricao,preco,dimensoes,idcategoria,idtipo,idmarca) VALUES
+('AMiO - Interface de diagnóstico compacto Bluetooth OBD2 / CAN - v2.2', 'interface de diagnóstico', '5.51', '25x25x25', '1', '1', "1");
 /* FIM DE INSERÇÃO DE PRODUTOS - AUTOMÓVEL */
 /* FIM DA AUTOMOVEL */
 /* -------------------------------------------------------------------------------------------------------- */
 
 /* DOMOTICA */
 CREATE TABLE tipoproduto_domo(
-idtipo INT PRIMARY KEY AUTO_INCREMENT UNIQUE,
+idtipo INT PRIMARY KEY AUTO_INCREMENT,
 nome VARCHAR(100),
 idcategoria INT, FOREIGN KEY(idcategoria) REFERENCES categoria(idcat)
 );
 
 CREATE TABLE produto_domo(
-idproduto INT PRIMARY KEY AUTO_INCREMENT UNIQUE,
+idproduto INT PRIMARY KEY AUTO_INCREMENT,
 numreferencia INT UNIQUE,
 nome VARCHAR(100),
 descricao VARCHAR(500),
@@ -180,13 +201,13 @@ idmarca INT, FOREIGN KEY (idmarca) REFERENCES marcas(idmarca)
 
 /* BATERIAS */
 CREATE TABLE tipoproduto_bat(
-idtipo INT PRIMARY KEY AUTO_INCREMENT UNIQUE,
+idtipo INT PRIMARY KEY AUTO_INCREMENT,
 nome VARCHAR(100),
 idcategoria INT, FOREIGN KEY(idcategoria) REFERENCES categoria(idcat)
 );
 
 CREATE TABLE produto_bat(
-idproduto INT PRIMARY KEY AUTO_INCREMENT UNIQUE,
+idproduto INT PRIMARY KEY AUTO_INCREMENT,
 numreferencia INT UNIQUE,
 nome VARCHAR(100),
 descricao VARCHAR(500),
