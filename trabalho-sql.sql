@@ -205,7 +205,7 @@ idmarca INT, FOREIGN KEY (idmarca) REFERENCES marcas(idmarca)
 );
 
 /* INSERÇÃO DE PRODUTOS - AUTOMÓVEL - Ruben */
-INSERT INTO produto_auto(numreferencia,nome,descricao,preco,dimensoes,idtipo,idmarca) VALUES
+INSERT INTO produto_auto(numreferencia, nome, descricao, preco, dimensoes, idtipo, idmarca) VALUES
 ('5903293047330', 'AMiO - Interface de diagnóstico compacto Bluetooth OBD2 / CAN - v2.2', 'interface de diagnóstico', '5.51', '25x25x25', '1', '0001'),
 ('5906534017475', 'K2 Lamp Protect - Kit revestimento de proteção para faróis (selante de faróis)', 'K2 LAMP PROTECT é uma solução de proteção de longa duração', '7.95', '50x50x25', '2', '0002'),
 (NULL, 'TE Deutsch 1062-16-0122 - Terminal fêmea para fichas Deutsch Size 16 (0.75...2mm²)', 'Tamanho do terminal: 16', '0.59', '50x50x25', '3', '0003'),
