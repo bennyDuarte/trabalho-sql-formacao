@@ -65,7 +65,11 @@ INSERT INTO marcas (nomemarca,morada,numerofiscal)VALUES
 ('Högert', 'ALEMANHA', '0000007');
 /* --------- - -----  */
 /* DOMOTICA - ROSA */
-
+('Amazon', '410 Terry Ave N, Seattle, WA 98109 USA', '0000008'),
+('Aqara', 'Shenzhen China', '0000009'),
+('BroadLink', '57 Jianger Road, Binjiang District, Hangzhou, China', '0000010'),
+('Danalock', 'Grønhøjvej 64 A, 8462 Harlev, Denmark', '0000011'),
+('Sonoff', 'Shenzhen, Guangdong Province, China', '0000013');
 /* -------- - ---- */
 /* FIM DE INSERÇÃO DAS MARCAS */
 /* ------------------------------------------------------------------------------------------------------------------------------- */
@@ -241,22 +245,16 @@ nome VARCHAR(100),
 idcategoria INT DEFAULT 3, FOREIGN KEY(idcategoria) REFERENCES categoria(idcat)
 );
 INSERT INTO tipoproduto_domo (nome) VALUES
- ('Tomada Inteligente'),
- ('Modulo Interruptor'),
- ('Interruptor Inteligente'), 
- ('Modulo interruptor para automaçao'),
- ('Modulo medidor'),
- ('Computador'),
- ('Mtgud'),
- ('Modulo medidor de consumo trifasico'),
- ('Rule Modulo Shelly proq3em'),
- ('50A ct modulo medidor de consumo duplo'),
- ('Medidor consumo trafico Wifi c/3');
+('Amazon Alexa'),
+('Aqara'),
+('Broadlink'),
+('Danalock'),
+('Dispositivos RF'),
 
 CREATE TABLE produto_domo(
 idproduto INT PRIMARY KEY AUTO_INCREMENT,
 numreferencia VARCHAR(20) UNIQUE NULL,
-nome VARCHAR(100),
+nome VARCHAR(100),0
 descricao VARCHAR(500),
 preco DECIMAL(10,2),
 dimensoes VARCHAR(100),
@@ -266,7 +264,11 @@ idmarca INT, FOREIGN KEY (idmarca) REFERENCES marcas(idmarca)
 
 /* INSERÇÃO DE PRODUTOS - DOMÓTICA - Ruben */
 /*INSERT INTO produto_domo(referencia,nome,descriçao,preço,idtipo,idmarca) VALUES */
-
+('0840080539898', 'Amazon Echo Dot (5th Gen) - Coluna inteligente com Alexa e Bluetooth - Preto Antracite', 'Coluna inteligente com assistente de voz que permite gerir dispositivos via Wi-Fi e Bluetooth. ', '61.99', '100x100x89', '1', '27'),
+('6975833352135', 'Aqara DW-S03D - Sensor de Portas e Janelas sem fios ZigBee [T1]', 'Sensor de portas e janelas sem fios com ZigBee 3.0', '19.99', '41x22x11', '2', '28'),
+('6924826708442', 'BroadLink RM4 mini - Estação Controlo Remoto IR universal Mini 360º', 'Controla dispositivos por infravermelho através de smartphone através de Wi-Fi ou rede móvel', '16.99', '48x42', '3', '29'),
+('095-4194', 'Danalock DCE35030NID5 - Cilindro (''canhão'') ajustável para Danalock V3 c/ 5 chaves incluídas - 50-30mm', 'Cilindro de segurança com perfil Euro para fechaduras inteligentes Danalock V3', '94.43', '40x30', '4', '30'),
+('096-6145', 'Sonoff RF R2 - Wireless Smart Switch Com Receptor RF para Smart Home', 'O interruptor sem fios RF 433MHz permite ligar e desligar dispositivos a partir de qualquer lugar através da app eWeLink', '9.72', '89x39x24', '4', '31'),
 /* FIM DE INSERÇÃO DE PRODUTOS - DOMÓTICA */
 /* FIM DA DOMOTICA */
 /* ------------------------------------------------------------------------------------------------------------------------------- */
