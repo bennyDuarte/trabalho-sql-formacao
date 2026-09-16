@@ -326,3 +326,12 @@ FROM marcas m
 INNER JOIN produto_auto pauto
 ON pauto.idmarca = m.idmarca
 WHERE m.nomemarca = 'AMiO';
+
+/* Query - n critérios */
+
+SELECT p.idpessoa, p.nome, co.cargo, cl.data_registo AS data_registo_cliente
+FROM pessoas p
+INNER JOIN colaboradores co
+ON co.idpessoa = p.idpessoa
+INNER JOIN cliente cl
+ON cl.idpessoa = p.idpessoa; 
