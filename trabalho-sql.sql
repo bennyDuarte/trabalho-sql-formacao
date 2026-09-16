@@ -319,7 +319,7 @@ INSERT INTO produto_bat (numreferencia, nome, descricao, preco, dimensoes, idtip
 /*	                                                      QUERIES																   */
 /*																																   */
 /* ------------------------------------------------------------------------------------------------------------------------------- */
-/* Query -1 */
+/* Query - 1 critério */
 
 SELECT m.nomemarca
 FROM marcas m
