@@ -232,13 +232,13 @@ idmarca INT, FOREIGN KEY (idmarca) REFERENCES marcas(idmarca)
 
 /* INSERÇÃO DE PRODUTOS - AUTOMÓVEL - Ruben */
 INSERT INTO produto_auto(numreferencia,nome,descricao,preco,dimensoes,idtipo,idmarca) VALUES
-('5903293047330', 'AMiO - Interface de diagnóstico compacto Bluetooth OBD2 / CAN - v2.2', 'interface de diagnóstico', '5.51', '25x25x25', '1', '0001'),
-('5906534017475', 'K2 Lamp Protect - Kit revestimento de proteção para faróis (selante de faróis)', 'K2 LAMP PROTECT é uma solução de proteção de longa duração', '7.95', '50x50x25', '2', '0002'),
-(NULL, 'TE Deutsch 1062-16-0122 - Terminal fêmea para fichas Deutsch Size 16 (0.75...2mm²)', 'Tamanho do terminal: 16', '0.59', '50x50x25', '3', '0003'),
-(NULL, 'TE Connectivity 183024-1 - Terminal macho para ficha AMP macho para fio 0.75..1.5mm² 14A', 'Tipo de conector: terminal macho para fichas AMP Superseal 1.5 macho', '0.18', '22.75x1.5', '3', '0004'),
-('5021374445872', 'ELTA EB0380TB - Lâmpada BAY15d P21/5W 12V', 'Tipo de lâmpada: para automóveis', '0.65', '22.75x1.5', '4', '0005'),
-('4895251658829', 'EcoFlow Delta 3 Max Plus - Power Station 3000W 2048Wh (expansível) c/ bateria LFP de 10 anos e App', 'A EcoFlow DELTA 3 Max Plus redefine o conceito de energia portátil', '0.65', '22.75x1.5', '5', '0006'),
-('5902801283147', 'Högert HT8G602 - Cabos de arranque de bateria p/ automóvel 600A - 3,5m', 'Comprimento: 3,5m', '14.70', '3 metros', '6', '0007');
+('5903293047330', 'AMi0 - Interface de diagnóstico compacto Bluetooth OBD2 / CAN - v2.2', 'interface de diagnóstico', '5.51', '25x25x25', '1', 20),
+('5906534017475', 'K2 Lamp Protect - Kit revestimento de proteção para faróis (selante de faróis)', 'K2 LAMP PROTECT é uma solução de proteção de longa duração', '7.95', '50x50x25', '2', 21),
+(NULL, 'TE Deutsch 1062-16-0122 - Terminal fêmea para fichas Deutsch Size 16 (0.75...2mm²)', 'Tamanho do terminal: 16', '0.59', '50x50x25', '3', 22),
+(NULL, 'TE Connectivity 183024-1 - Terminal macho para ficha AMP macho para fio 0.75..1.5mm² 14A', 'Tipo de conector: terminal macho para fichas AMP Superseal 1.5 macho', '0.18', '22.75x1.5', '3', 23),
+('5021374445872', 'ELTA EB0380TB - Lâmpada BAY15d P21/5W 12V', 'Tipo de lâmpada: para automóveis', '0.65', '22.75x1.5', '4', 24),
+('4895251658829', 'EcoFlow Delta 3 Max Plus - Power Station 3000W 2048Wh (expansível) c/ bateria LFP de 10 anos e App', 'A EcoFlow DELTA 3 Max Plus redefine o conceito de energia portátil', '0.65', '22.75x1.5', '5', 25),
+('5902801283147', 'Högert HT8G602 - Cabos de arranque de bateria p/ automóvel 600A - 3,5m', 'Comprimento: 3,5m', '14.70', '3 metros', '6', 26);
 /* FIM DE INSERÇÃO DE PRODUTOS - AUTOMÓVEL */
 /* FIM DA AUTOMOVEL */
 /* ------------------------------------------------------------------------------------------------------------------------------- */
@@ -319,4 +319,10 @@ INSERT INTO produto_bat (numreferencia, nome, descricao, preco, dimensoes, idtip
 /*	                                                      QUERIES																   */
 /*																																   */
 /* ------------------------------------------------------------------------------------------------------------------------------- */
-/* POR INTRODUZIR */
+/* Query -1 */
+
+SELECT m.nomemarca
+FROM marcas m
+INNER JOIN produto_auto pauto
+ON pauto.idmarca = m.idmarca
+WHERE m.nomemarca = 'AMiO';
