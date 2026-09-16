@@ -1,4 +1,4 @@
-/* ------------------------------------------------------------------------------------------------------------------------------- */
+ /* ------------------------------------------------------------------------------------------------------------------------------- */
 /*																																   */
 /*											    	TRABALHO DE SQL - UC02830													   */
 /*								 DESENVOLVIDO POR RUBEN DUARTE, CARLOS GOMES E ROSA BORGES										   */
@@ -62,19 +62,10 @@ INSERT INTO marcas (nomemarca,morada,numerofiscal)VALUES
 ('TE DEUTSCH', 'ALEMANHA', '0000004'),
 ('ELTA', 'REINO UNIDO', '0000005'),
 ('EcoFlow', 'ESTADOS UNIDOS', '0000006'),
-('Högert', 'ALEMANHA', '0000007'),
+('Högert', 'ALEMANHA', '0000007');
 /* --------- - -----  */
 /* DOMOTICA - ROSA */
-('Amazon', '410 Terry Ave N, Seattle, WA 98109 USA', '0000008'),
-('Aqara', 'Shenzhen China', '0000009'),
-('BroadLink', '57 Jianger Road, Binjiang District, Hangzhou, China', '0000010'),
-('Danalock', 'Grønhøjvej 64 A, 8462 Harlev, Denmark', '0000011'),
-('Sonoff', 'Shenzhen, Guangdong Province, China', '0000013'),
-/* -------- - ---- */
-/* BATERIAS - RUBEN */
-('Raspberry PI', 'Cambridge, 37 Hills Rd, United Kingdom', '00000014'),
-('Phasak', 'C/ El Pensamiento 27, Escalera Izquierda, 28020 Madrid, Spain', '00000015'),
-('Green Cell', 'Kalwaryjska 33, PL-30-509 Krakow, Poland', '00000016');
+
 /* -------- - ---- */
 /* FIM DE INSERÇÃO DAS MARCAS */
 /* ------------------------------------------------------------------------------------------------------------------------------- */
@@ -171,7 +162,7 @@ INSERT INTO tipoproduto_eletro(nome) VALUES
 CREATE TABLE produto_eletro(
 idproduto INT PRIMARY KEY AUTO_INCREMENT,
 numreferencia VARCHAR(20) UNIQUE,
-nome VARCHAR(250),
+nome VARCHAR(100),
 descricao VARCHAR(500),
 preco DECIMAL(10,2),
 dimensoes VARCHAR(100),
@@ -222,7 +213,7 @@ INSERT INTO tipoproduto_auto(nome) VALUES
 CREATE TABLE produto_auto(
 idproduto INT PRIMARY KEY AUTO_INCREMENT,
 numreferencia VARCHAR(20) UNIQUE NULL,
-nome VARCHAR(250),
+nome VARCHAR(100),
 descricao VARCHAR(500),
 preco DECIMAL(10,2),
 dimensoes VARCHAR(100),
@@ -250,16 +241,22 @@ nome VARCHAR(100),
 idcategoria INT DEFAULT 3, FOREIGN KEY(idcategoria) REFERENCES categoria(idcat)
 );
 INSERT INTO tipoproduto_domo (nome) VALUES
-('Amazon Alexa'),
-('Aqara'),
-('Broadlink'),
-('Danalock'),
-('Dispositivos RF');
+ ('Tomada Inteligente'),
+ ('Modulo Interruptor'),
+ ('Interruptor Inteligente'), 
+ ('Modulo interruptor para automaçao'),
+ ('Modulo medidor'),
+ ('Computador'),
+ ('Mtgud'),
+ ('Modulo medidor de consumo trifasico'),
+ ('Rule Modulo Shelly proq3em'),
+ ('50A ct modulo medidor de consumo duplo'),
+ ('Medidor consumo trafico Wifi c/3');
 
 CREATE TABLE produto_domo(
 idproduto INT PRIMARY KEY AUTO_INCREMENT,
 numreferencia VARCHAR(20) UNIQUE NULL,
-nome VARCHAR(250),
+nome VARCHAR(100),
 descricao VARCHAR(500),
 preco DECIMAL(10,2),
 dimensoes VARCHAR(100),
@@ -268,12 +265,8 @@ idmarca INT, FOREIGN KEY (idmarca) REFERENCES marcas(idmarca)
 );
 
 /* INSERÇÃO DE PRODUTOS - DOMÓTICA - Ruben */
-INSERT INTO produto_domo(numreferencia,nome,descricao,preco,dimensoes,idtipo,idmarca) VALUES
-('0840080539898', 'Amazon Echo Dot (5th Gen) - Coluna inteligente com Alexa e Bluetooth - Preto Antracite', 'Coluna inteligente com assistente de voz que permite gerir dispositivos via Wi-Fi e Bluetooth. ', '61.99', '100x100x89', '1', '27'),
-('6975833352135', 'Aqara DW-S03D - Sensor de Portas e Janelas sem fios ZigBee [T1]', 'Sensor de portas e janelas sem fios com ZigBee 3.0', '19.99', '41x22x11', '2', '28'),
-('6924826708442', 'BroadLink RM4 mini - Estação Controlo Remoto IR universal Mini 360º', 'Controla dispositivos por infravermelho através de smartphone através de Wi-Fi ou rede móvel', '16.99', '48x42', '3', '29'),
-('095-4194', 'Danalock DCE35030NID5 - Cilindro (''canhão'') ajustável para Danalock V3 c/ 5 chaves incluídas - 50-30mm', 'Cilindro de segurança com perfil Euro para fechaduras inteligentes Danalock V3', '94.43', '40x30', '4', '30'),
-('096-6145', 'Sonoff RF R2 - Wireless Smart Switch Com Receptor RF para Smart Home', 'O interruptor sem fios RF 433MHz permite ligar e desligar dispositivos a partir de qualquer lugar através da app eWeLink', '9.72', '89x39x24', '4', '31');
+/*INSERT INTO produto_domo(referencia,nome,descriçao,preço,idtipo,idmarca) VALUES */
+
 /* FIM DE INSERÇÃO DE PRODUTOS - DOMÓTICA */
 /* FIM DA DOMOTICA */
 /* ------------------------------------------------------------------------------------------------------------------------------- */
@@ -284,19 +277,14 @@ idtipo INT PRIMARY KEY AUTO_INCREMENT,
 nome VARCHAR(100),
 idcategoria INT DEFAULT 4, FOREIGN KEY(idcategoria) REFERENCES categoria(idcat)
 );
-/* INSERÇÃO DE TIPO DE PRODUTOS - BATERIAS */
-INSERT INTO tipoproduto_bat(nome) Values 
-('Baterias Backup'),
-('Baterias Chumbo / Gel'),
-('Baterias de Lítio'),
-('Baterias Li-Po genéricas'),
-('Baterias p/ aspiradores');
+/* INSERÇÃO DE TIPO DE PRODUTOS - BATERIAS */ 
+
 /* -------- -- ---- -- -------- - -------- */
 CREATE TABLE produto_bat(
 idproduto INT PRIMARY KEY AUTO_INCREMENT,
 numreferencia VARCHAR(20) UNIQUE NULL,
-nome VARCHAR(250),
-descricao VARCHAR(1000),
+nome VARCHAR(100),
+descricao VARCHAR(500),
 preco DECIMAL(10,2),
 dimensoes VARCHAR(100),
 idtipo INT, FOREIGN KEY (idtipo) REFERENCES tipoproduto_bat(idtipo),
@@ -304,12 +292,7 @@ idmarca INT, FOREIGN KEY (idmarca) REFERENCES marcas(idmarca)
 );
 
 /* INSERÇÃO DE PRODUTOS - BATERIAS - Ruben */
-INSERT INTO produto_bat (numreferencia, nome, descricao, preco, dimensoes, idtipo, idmarca) VALUES
-('5056561803739', 'Raspberry Pi SC1163 - Bateria de Backup para o RTC do Raspberry Pi 5', 'O IC de gestão de energia utilizado numa placa integra um relógio de tempo real e um circuito de carregamento', 5.99, NULL, 1, 32),
-('5605922047222', 'Phasak PHB 1209 - Bateria de Chumbo (Pb) 12V 9.0Ah (term. largos)', 'A Phasak PHB 1209 é uma bateria selada de chumbo-ácido (VRLA) de 12V e 9Ah', 17.00, NULL, 2, 33),
-('5904326374874', 'Green Cell LFPGC12V20AH - Bateria de Lithium (LiFePO4) BMS 12.8V 256Wh 20A', 'Bateria de lítio LiFePO4 de alta eficiência com BMS integrado 12.8V 256Wh', 85.90, NULL, 3, 34),
-('8436300862703', 'Bateria 3.7v 250mAH Li-Po 20x30x5mm', 'Bateria de lítio recarregável com 3,7 V e 250 mAh, ideal para dispositivos compactos, oferecendo desempenho estável.', 5.85, '20x30x5mm', 4, 32),
-('4047038305895', 'Bateria para aspirador compatível com Dirt Devil Libero M606 14.4V 800mAh 11,5Wh NiMH', 'Esta bateria de substituição NiMH de 14,4V oferece 800mAh e 11,5Wh de energia para aspiradores Dirt Devil', 20.27, NULL, 5, 33);
+
 /* FIM DE INSERÇÃO DE PRODUTOS - BATERIAS */
 /* FIM DA BATERIAS */
 /* ------------------------------------------------------------------------------------------------------------------------------- */
