@@ -319,3 +319,4 @@ INSERT INTO produto_bat (numreferencia, nome, descricao, preco, dimensoes, idtip
 /*	                                                      QUERIES																   */
 /*																																   */
 /* ------------------------------------------------------------------------------------------------------------------------------- */
+/* POR INTRODUZIR */
