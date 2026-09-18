@@ -31,7 +31,7 @@ CREATE TABLE marcasProduto(
 
 INSERT INTO marcasProduto(nome,morada,numfiscal) VALUES
 /* BATOTA */
-('NULL','NULL','NULL'),
+('Genérica','NULL','NULL'),
 /* Eletrónica - id 2 a id 19 */
 ('Texas Instrumentes','12500 TI Blvd. Dallas Texas 75243 USA','972995201'),
 ('Microchip Technology Inc','2355 West Chandler Blvd. Chandler Arizona USA', '972995122'),
@@ -51,7 +51,7 @@ INSERT INTO marcasProduto(nome,morada,numfiscal) VALUES
 ('STMicroelectronics','STMicroelectronics Corporation 201 Flynn Road Camarillo, California 93012 USA', '852018460'),
 ('Arrow Electronics','Arrow Electronics Corporation 201 Flynn Road Camarillo, California 93012 USA', '455017960'),
 /* Automóvel - id 20 a id 27 */
-('AMiO', 'POLONIA', '0000001'),
+('AMiO', '63A Knurowska Street 41-800 Zabrze, Poland', 'PL6482786722'),
 ('K2', 'ESTADOS UNIDOS', '0000002'),
 ('TE Connectivity', 'IRLANDA', '0000003'),
 ('TE DEUTSCH', 'ALEMANHA', '0000004'),
@@ -287,15 +287,3 @@ INNER JOIN produtos prod ON lf.idProd = prod.idProd
 WHERE f.idfat = 1;
 
 /* ------------------------------------------------------------------------------------------------------------------------------- */
-
-/* Query - 1 critério */
-SELECT m.nome
-FROM marcasProduto m
-INNER JOIN produtos p ON p.idmarca = m.idmarca
-WHERE m.nome = 'AMiO';
-
-/* Query - n critérios */
-SELECT p.idpessoa, p.nome, co.cargo, cl.data_registo AS data_registo_cliente
-FROM pessoas p
-INNER JOIN colaboradores co ON co.idpessoa = p.idpessoa
-INNER JOIN cliente cl ON cl.idpessoa = p.idpessoa;
