@@ -335,3 +335,4 @@ INNER JOIN colaboradores co
 ON co.idpessoa = p.idpessoa
 INNER JOIN cliente cl
 ON cl.idpessoa = p.idpessoa; 
+
