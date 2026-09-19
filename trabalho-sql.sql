@@ -1,17 +1,19 @@
 /* ------------------------------------------------------------------------------------------------------------------------------- */
-/*																																   */
-/*											    	TRABALHO DE SQL - UC02830													   */
-/*								 DESENVOLVIDO POR RUBEN DUARTE, CARLOS GOMES E ROSA BORGES										   */
-/*																																   */
+/*                                                                                                                                 */
+/*                                            TRABALHO DE SQL - UC02830                                                            */
+/*                                 DESENVOLVIDO POR RUBEN DUARTE, CARLOS GOMES E ROSA BORGES                                       */
+/*                                                                                                                                 */
 /* ------------------------------------------------------------------------------------------------------------------------------- */
 
 DROP DATABASE IF EXISTS LojaComponentes;
-CREATE DATABASE LojaComponentes;
+CREATE DATABASE LojaComponentes CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
 USE LojaComponentes;
+
+/* ------------------------------------------------------------------------------------------------------------------------------- */
 
 CREATE TABLE categoriaProduto(
 	idcat INT PRIMARY KEY AUTO_INCREMENT,
-	nome VARCHAR (200)
+	nome VARCHAR(200) NOT NULL UNIQUE
 );
 
 INSERT INTO categoriaProduto(nome) VALUES
@@ -24,15 +26,13 @@ INSERT INTO categoriaProduto(nome) VALUES
 
 CREATE TABLE marcaProduto(
 	idmarca INT PRIMARY KEY AUTO_INCREMENT,
-	nome VARCHAR(200),
+	nome VARCHAR(200) NOT NULL,
 	morada VARCHAR(255),
 	numfiscal VARCHAR(30)
 );
 
 INSERT INTO marcaProduto(nome, morada, numfiscal) VALUES
-/* BATOTA / Genérica - id 1 */
 ('Genérica', NULL, NULL),
-/* Eletrónica - id 2 a id 18 */
 ('Texas Instruments', '12500 TI Blvd, Dallas, TX 75243, USA', 'US750272200'),
 ('Microchip Technology Inc', '2355 W Chandler Blvd, Chandler, AZ 85224, USA', 'US860629024'),
 ('Analog Devices', '1 Analog Way, Wilmington, MA 01887, USA', 'US042234820'),
@@ -50,7 +50,6 @@ INSERT INTO marcaProduto(nome, morada, numfiscal) VALUES
 ('Fairchild', '82 Running Hill Rd, South Portland, ME 04106, USA', 'US010211516'),
 ('STMicroelectronics', '39 Chemin du Champ-des-Filles, 1228 Plan-les-Ouates, Geneva, Switzerland', 'CHE106038472'),
 ('Arrow Electronics', '9201 E Dry Creek Rd, Centennial, CO 80112, USA', 'US111806155'),
-/* Automóvel - id 19 a id 25 */
 ('AMiO', 'ul. Knurowska 63A, 41-800 Zabrze, Poland', 'PL6482786722'),
 ('K2 (Melle Sp. z o.o.)', 'Stary Staw 9, 63-400 Ostrów Wielkopolski, Poland', 'PL6222301004'),
 ('TE Connectivity', '10 Earlsfort Terrace, Dublin 2, D02 T380, Ireland', 'IE9513361O'),
@@ -58,13 +57,11 @@ INSERT INTO marcaProduto(nome, morada, numfiscal) VALUES
 ('ELTA Automotive Ltd', 'Express House, Phoenix Way, Halesowen, B62 8JZ, United Kingdom', 'GB485458002'),
 ('EcoFlow', '100 Bayview Point, Suite 100, San Mateo, CA 94402, USA', 'US824092817'),
 ('Högert Technik', 'ul. Przyszłości 21, 05-800 Pruszków, Poland', 'PL5342505912'),
-/* Domótica - id 26 a id 30 */
 ('Amazon', '410 Terry Ave N, Seattle, WA 98109, USA', 'LU26375245'),
 ('Aqara (Lumi United Tech)', '8th Floor, Bldg 1, Chongwen Park, Nanshan iPark, Shenzhen, China', 'CN914403000539829283'),
 ('BroadLink', '57 Jianger Road, Binjiang District, Hangzhou, Zhejiang, China', 'CN91330108072120032N'),
 ('Danalock ApS', 'Grønhøjvej 68, 8462 Harlev, Denmark', 'DK31613291'),
 ('Sonoff (Shenzhen Sonoff Tech)', '1001, BLDG 8, Lianhua Industrial Park, Longhua District, Shenzhen, China', 'CN91440300359892182B'),
-/* Baterias - id 31 a id 33 */
 ('Raspberry Pi Ltd', 'Maurice Wilkes Building, St John''s Innovation Park, Cambridge CB4 0DS, UK', 'GB126304979'),
 ('Phasak', 'Calle El Pensamiento 27, 28020 Madrid, Spain', 'ESB84521908'),
 ('Green Cell (CSG S.A.)', 'ul. Kalwaryjska 33, 30-509 Kraków, Poland', 'PL6793089012');
@@ -73,86 +70,80 @@ INSERT INTO marcaProduto(nome, morada, numfiscal) VALUES
 
 CREATE TABLE tipoProduto(
 	idtipo INT PRIMARY KEY AUTO_INCREMENT,
-	nome VARCHAR(100),
-	idcat INT,
-	FOREIGN KEY (idcat) REFERENCES categoriaProduto(idcat)
+	nome VARCHAR(100) NOT NULL,
+	idcat INT NOT NULL,
+	FOREIGN KEY (idcat) REFERENCES categoriaProduto(idcat) ON DELETE RESTRICT
 );
 
-INSERT INTO tipoProduto(nome,idcat) VALUES
-/* Eletrónica - id 1 a id 17*/
-('Bobines de indutância',1),
-('Circuitos Integrados',1),
-('Condensadores',1),
-('Cristais',1),
-('Cabos',1),
-('Diodos',1),
-('Fichas',1),
-('Filtros',1),
-('Fio para Bobinagem',1),
-('Lâmpadas',1),
-('LEDs',1),
-('Resistências',1),
-('Termocondutores',1),
-('Tiristores',1),
-('Transistores',1),
-('Triacs',1),
-('Ventoinhas',1),
-/* Automóvel - id 18 a id 24*/
-('Diagnostico ODB',2),
-('Outros',2) ,
-('Superseal 1.5 (estanques)',2),
-('Terminais fêmea',2),
-('Presença e Sinalização',2),
-('Power Station',2),
-('Cabos para bateria',2),
-/* Domótica - id 25 a id 29 */
-('Amazon Alexa',3),
-('Aqara',3),
-('Broadlink',3),
-('Danalock',3),
-('Dispositivos RF',3),
-/* Baterias - id 30 a id 34 */
-('Baterias Backup',4),
-('Baterias Chumbo / Gel',4),
-('Baterias de Lítio',4),
-('Baterias Li-Po genéricas',4),
-('Baterias p/ aspiradores',4);
+INSERT INTO tipoProduto(nome, idcat) VALUES
+('Bobines de indutância', 1),
+('Circuitos Integrados', 1),
+('Condensadores', 1),
+('Cristais', 1),
+('Cabos', 1),
+('Diodos', 1),
+('Fichas', 1),
+('Filtros', 1),
+('Fio para Bobinagem', 1),
+('Lâmpadas', 1),
+('LEDs', 1),
+('Resistências', 1),
+('Termocondutores', 1),
+('Tiristores', 1),
+('Transistores', 1),
+('Triacs', 1),
+('Ventoinhas', 1),
+('Diagnostico ODB', 2),
+('Outros', 2),
+('Superseal 1.5 (estanques)', 2),
+('Terminais fêmea', 2),
+('Presença e Sinalização', 2),
+('Power Station', 2),
+('Cabos para bateria', 2),
+('Amazon Alexa', 3),
+('Aqara', 3),
+('Broadlink', 3),
+('Danalock', 3),
+('Dispositivos RF', 3),
+('Baterias Backup', 4),
+('Baterias Chumbo / Gel', 4),
+('Baterias de Lítio', 4),
+('Baterias Li-Po genéricas', 4),
+('Baterias p/ aspiradores', 4);
 
 /* ------------------------------------------------------------------------------------------------------------------------------- */
 
 CREATE TABLE produto(
 	idProd INT PRIMARY KEY AUTO_INCREMENT,
-	numref VARCHAR(20) NULL UNIQUE,
-	nome VARCHAR(255),
+	numref VARCHAR(20) UNIQUE,
+	nome VARCHAR(255) NOT NULL,
 	descricao VARCHAR(500),
-	preco DECIMAL (10,2),
+	preco DECIMAL(10,2) NOT NULL CHECK (preco >= 0),
 	dimensoes VARCHAR(100),
-	idtipo INT,
-	idmarca INT,
-	FOREIGN KEY (idtipo) REFERENCES tipoProduto(idtipo),
-	FOREIGN KEY (idmarca) REFERENCES marcaProduto(idmarca)
+	idtipo INT NOT NULL,
+	idmarca INT NOT NULL,
+	FOREIGN KEY (idtipo) REFERENCES tipoProduto(idtipo) ON DELETE RESTRICT,
+	FOREIGN KEY (idmarca) REFERENCES marcaProduto(idmarca) ON DELETE RESTRICT
 );
 
-INSERT INTO produto(numref,nome,descricao,preco,dimensoes,idtipo,idmarca) VALUES
-/* Eletrónica */
-('031-0071','Bobina de indutância axial 1000uH/1mH 60mA Ø3x8mm','Indutor axial com montagem THT, capaz de fornecer 1000 µH de indutância',0.16,'3x8',1,1),
-('001-0109','Circuito Integrado NE555','K40472',0.53,'3x8',2,1),
-('004-5086','Condensador cerâmico 100nF 50V','Condensador cerâmico de montagem through-hole (THT)',0.09,'3x8',3,1),
-('069-9630','Cristal de Quartzo 16.0MHz - Baixo perfil',NULL,0.80,'3x8',4,1),
-('5903293044551','AMiO - Bobine de fio CCA multifilar 1x1.50mm² - preto - 50m',NULL,8.75,'50',5,19),
-('007-0209','Diodo Rectificador 1000V 1A - 1N4007','Este diodo retificador de alta tensão utiliza montagem em THT e oferece tolerância de até 1 kV de tensão reversa.',0.09,'1',6,1),
-('019-4849','Conjunto de 10 cabos de ligação Jumper Dupont fêmea -> Crocodilo - 20cm',NULL,3.39,'20',7,1),
-('096-2424','Filtro de ferrite para cabo redondo Ø6mm',NULL,1.22,'6',8,1),
-('5410329402983','Velleman WIK01N - Fio bobinagem Ø0.1mm (1.5 Kohm) - 715m',NULL,8.30,'715',9,8), 
-('3522291184117','Lâmpada tubular E14 25W 24V - 16x54mm',NULL,4.10,NULL,10,1),
-('017-1209','LED 5mm transparente branco alto-brilho 33000mcd 15º','LED de 5 mm com brilho entre 23.5k e 33k mcd, cor branca fria, lente transparente e frente convexa.',0.20,NULL,11,1),
-('104-7048','Resistência de filme metálico 10kR 0.6W ±1% Ø2.5x6.8mm','Resistência de filme metálico para montagem THT',0.11,NULL,12,1),
-('8445577000626','Pasta térmica (2.0W/mK) - Branca - 3g','Pasta térmica branca com condutividade térmica de 2.0 W/m-K e densidade de 2,8 g/cm³',4.21,NULL,13,1),
-('002-1363','Tiristor BT169D',NULL,0.18,NULL,14,1),
-('002-1190','Transistor IRLZ44N','Transístor MOSFET de potência com canal enriquecido e nível lógico',1.14,NULL,15,1),
-('002-1361','Triac BTB24-800BWRG','Triac de potência com montagem THT, carcaça TO220AB, embalagem tubo',2.31,NULL,16,1),
-('048-0150','Sunon DP200A2123XST.GN','A ventoinha de 120x120x38 mm é alimentada a 230 VAC, 50 Hz, com potência de 22 W e corrente de 140 mA',14.99,NULL,17,1),
-/* Automóvel */
+INSERT INTO produto(numref, nome, descricao, preco, dimensoes, idtipo, idmarca) VALUES
+('031-0071', 'Bobina de indutância axial 1000uH/1mH 60mA Ø3x8mm', 'Indutor axial com montagem THT, capaz de fornecer 1000 µH de indutância', 0.16, '3x8', 1, 1),
+('001-0109', 'Circuito Integrado NE555', 'K40472', 0.53, '3x8', 2, 1),
+('004-5086', 'Condensador cerâmico 100nF 50V', 'Condensador cerâmico de montagem through-hole (THT)', 0.09, '3x8', 3, 1),
+('069-9630', 'Cristal de Quartzo 16.0MHz - Baixo perfil', NULL, 0.80, '3x8', 4, 1),
+('5903293044551', 'AMiO - Bobine de fio CCA multifilar 1x1.50mm² - preto - 50m', NULL, 8.75, '50', 5, 19),
+('007-0209', 'Diodo Rectificador 1000V 1A - 1N4007', 'Este diodo retificador de alta tensão utiliza montagem em THT e oferece tolerância de até 1 kV de tensão reversa.', 0.09, '1', 6, 1),
+('019-4849', 'Conjunto de 10 cabos de ligação Jumper Dupont fêmea -> Crocodilo - 20cm', NULL, 3.39, '20', 7, 1),
+('096-2424', 'Filtro de ferrite para cabo redondo Ø6mm', NULL, 1.22, '6', 8, 1),
+('5410329402983', 'Velleman WIK01N - Fio bobinagem Ø0.1mm (1.5 Kohm) - 715m', NULL, 8.30, '715', 9, 8),
+('3522291184117', 'Lâmpada tubular E14 25W 24V - 16x54mm', NULL, 4.10, NULL, 10, 1),
+('017-1209', 'LED 5mm transparente branco alto-brilho 33000mcd 15º', 'LED de 5 mm com brilho entre 23.5k e 33k mcd, cor branca fria, lente transparente e frente convexa.', 0.20, NULL, 11, 1),
+('104-7048', 'Resistência de filme metálico 10kR 0.6W ±1% Ø2.5x6.8mm', 'Resistência de filme metálico para montagem THT', 0.11, NULL, 12, 1),
+('8445577000626', 'Pasta térmica (2.0W/mK) - Branca - 3g', 'Pasta térmica branca com condutividade térmica de 2.0 W/m-K e densidade de 2,8 g/cm³', 4.21, NULL, 13, 1),
+('002-1363', 'Tiristor BT169D', NULL, 0.18, NULL, 14, 1),
+('002-1190', 'Transistor IRLZ44N', 'Transístor MOSFET de potência com canal enriquecido e nível lógico', 1.14, NULL, 15, 1),
+('002-1361', 'Triac BTB24-800BWRG', 'Triac de potência com montagem THT, carcaça TO220AB, embalagem tubo', 2.31, NULL, 16, 1),
+('048-0150', 'Sunon DP200A2123XST.GN', 'A ventoinha de 120x120x38 mm é alimentada a 230 VAC, 50 Hz, com potência de 22 W e corrente de 140 mA', 14.99, NULL, 17, 1),
 ('5903293047330', 'AMiO - Interface de diagnóstico compacto Bluetooth OBD2 / CAN - v2.2', 'interface de diagnóstico', 5.51, '25x25x25', 18, 19),
 ('5906534017475', 'K2 Lamp Protect - Kit revestimento de proteção para faróis (selante de faróis)', 'K2 LAMP PROTECT é uma solução de proteção de longa duração', 7.95, '50x50x25', 19, 20),
 (NULL, 'TE Deutsch 1062-16-0122 - Terminal fêmea para fichas Deutsch Size 16 (0.75...2mm²)', 'Tamanho do terminal: 16', 0.59, '50x50x25', 21, 22),
@@ -160,13 +151,11 @@ INSERT INTO produto(numref,nome,descricao,preco,dimensoes,idtipo,idmarca) VALUES
 ('5021374445872', 'ELTA EB0380TB - Lâmpada BAY15d P21/5W 12V', 'Tipo de lâmpada: para automóveis', 0.65, '22.75x1.5', 22, 23),
 ('4895251658829', 'EcoFlow Delta 3 Max Plus - Power Station 3000W 2048Wh (expansível) c/ bateria LFP de 10 anos e App', 'A EcoFlow DELTA 3 Max Plus redefine o conceito de energia portátil', 0.65, '22.75x1.5', 23, 24),
 ('5902801283147', 'Högert HT8G602 - Cabos de arranque de bateria p/ automóvel 600A - 3,5m', 'Comprimento: 3,5m', 14.70, '3 metros', 24, 25),
-/* Domótica */
 ('0840080539898', 'Amazon Echo Dot (5th Gen) - Coluna inteligente com Alexa e Bluetooth - Preto Antracite', 'Coluna inteligente com assistente de voz que permite gerir dispositivos via Wi-Fi e Bluetooth. ', 61.99, '100x100x89', 25, 26),
 ('6975833352135', 'Aqara DW-S03D - Sensor de Portas e Janelas sem fios ZigBee [T1]', 'Sensor de portas e janelas sem fios com ZigBee 3.0', 19.99, '41x22x11', 26, 27),
 ('6924826708442', 'BroadLink RM4 mini - Estação Controlo Remoto IR universal Mini 360º', 'Controla dispositivos por infravermelho através de smartphone através de Wi-Fi ou rede móvel', 16.99, '48x42', 27, 28),
 ('095-4194', 'Danalock DCE35030NID5 - Cilindro (''canhão'') ajustável para Danalock V3 c/ 5 chaves incluídas - 50-30mm', 'Cilindro de segurança com perfil Euro para fechaduras inteligentes Danalock V3', 94.43, '40x30', 28, 29),
 ('096-6145', 'Sonoff RF R2 - Wireless Smart Switch Com Receptor RF para Smart Home', 'O interruptor sem fios RF 433MHz permite ligar e desligar dispositivos a partir de qualquer lugar através da app eWeLink', 9.72, '89x39x24', 29, 30),
-/* Baterias */
 ('5056561803739', 'Raspberry Pi SC1163 - Bateria de Backup para o RTC do Raspberry Pi 5', 'O IC de gestão de energia utilizado numa placa integra um relógio de tempo real e um circuito de carregamento', 5.99, NULL, 30, 31),
 ('5605922047222', 'Phasak PHB 1209 - Bateria de Chumbo (Pb) 12V 9.0Ah (term. largos)', 'A Phasak PHB 1209 é uma bateria selada de chumbo-ácido (VRLA) de 12V e 9Ah', 17.00, NULL, 31, 32),
 ('5904326374874', 'Green Cell LFPGC12V20AH - Bateria de Lithium (LiFePO4) BMS 12.8V 256Wh 20A', 'Bateria de lítio LiFePO4 de alta eficiência com BMS integrado 12.8V 256Wh', 85.90, NULL, 32, 33),
@@ -177,14 +166,14 @@ INSERT INTO produto(numref,nome,descricao,preco,dimensoes,idtipo,idmarca) VALUES
 
 CREATE TABLE loja(
 	idLoja INT PRIMARY KEY AUTO_INCREMENT,
-	nome VARCHAR(100),
-	rua VARCHAR(255),
-	localidade VARCHAR(255),
-	codigo_postal VARCHAR(100),
-	distrito VARCHAR(255)
+	nome VARCHAR(100) NOT NULL,
+	rua VARCHAR(255) NOT NULL,
+	localidade VARCHAR(255) NOT NULL,
+	codigo_postal VARCHAR(100) NOT NULL,
+	distrito VARCHAR(255) NOT NULL
 );
 
-INSERT INTO loja (nome,rua,localidade,codigo_postal,distrito) VALUES
+INSERT INTO loja (nome, rua, localidade, codigo_postal, distrito) VALUES
 ('Loja de Leiria', 'Rua D. João III, nº 42', 'Leiria', '2400-150', 'Leiria'),
 ('Loja de Lisboa', 'Avenida da Liberdade, nº 120', 'Lisboa', '1250-146', 'Lisboa'),
 ('Loja do Porto', 'Rua de Santa Catarina, nº 300', 'Porto', '4000-443', 'Porto'),
@@ -194,7 +183,7 @@ INSERT INTO loja (nome,rua,localidade,codigo_postal,distrito) VALUES
 
 CREATE TABLE pessoa(
 	idpessoa INT PRIMARY KEY AUTO_INCREMENT,
-	nome VARCHAR(100),
+	nome VARCHAR(100) NOT NULL,
 	datanascimento DATE,
 	rua VARCHAR(100) NOT NULL,
 	localidade VARCHAR(100) NOT NULL,
@@ -204,31 +193,31 @@ CREATE TABLE pessoa(
 );
 
 INSERT INTO pessoa (nome, datanascimento, rua, localidade, codigo_postal, distrito, ncontribuinte) VALUES
-('Ana Julia', '1987-07-24', 'Rua Ferreira Borges, nº 10', 'Coimbra', '3000-179', 'Coimbra', '12345875'),
-('Maria Amelia', '1988-01-07', 'Avenida da Liberdade, nº 45', 'Lisboa', '1250-096', 'Lisboa', '13457588'),
-('Paula Esteves', '1975-06-17', 'Rua Dr. José de Abreu, nº 12', 'Mafra', '2640-482', 'Lisboa', '14470764'),
-('Teresa Chaves', '1975-05-10', 'Rua 25 de Abril, nº 88', 'Sintra', '2710-520', 'Lisboa', '1777810'),
-('Rosa Neves', '1995-08-16', 'Rua Monte Abraão, nº 5', 'Monte Abraão', '2745-302', 'Lisboa', '1227689'),
-('Carlos Gomes', '1981-11-15', 'Rua de Angola, nº 14', 'Agualva', '2735-100', 'Lisboa', '1495790'),
-('Ruben Sousa', '1987-06-30', 'Rua dos Peregrinos, nº 3', 'Leiria', '2400-001', 'Leiria', '1397732'),
-('Marcos Daniel', '1977-12-24', 'Rua Rainha Ginga, nº 22', 'Porto', '4000-002', 'Porto', '1786543'),
-('Antonio Vaz', '1950-01-01', 'Avenida Lourenço Peixinho, nº 101', 'Aveiro', '3800-159', 'Aveiro', '12345822'),
-('Marcelo Texeira', '1960-03-04', 'Rua do Raio, nº 50', 'Braga', '4700-020', 'Braga', '13427588'),
-('Marlene Chaves', '1964-06-14', 'Rua Direita, nº 15', 'Viseu', '3500-110', 'Viseu', '14470711'),
-('Marcela Nuno', '1944-07-11', 'Rua 19 de Abril, nº 7', 'Setúbal', '2900-123', 'Setúbal', '1277810'),
-('Lucia Neves', '1975-04-28', 'Rua de Olivais, nº 31', 'Lisboa', '1800-001', 'Lisboa', '12276801'),
-('Novoes Mendes', '1945-05-09', 'Rua da Alemanha, nº 4', 'Almada', '2800-010', 'Setúbal', '1495722'),
-('Ruben Tavares', '1981-05-29', 'Avenida do Brasil, nº 200', 'Lisboa', '1700-065', 'Lisboa', '1397532'),
-('Neves Daniel', '1984-09-24', 'Rua do Peregrino, nº 18', 'Faro', '8000-100', 'Faro', '1786533'),
-('Ana Luisa', '1932-02-11', 'Rua de Barcelona, nº 9', 'Cascais', '2750-010', 'Lisboa', '1765906'),
-('Pereira Marcio', '1958-09-04', 'Rua de Moçambique, nº 77', 'Amadora', '2700-001', 'Lisboa', '1644017'),
-('Aguiar Mendes', '1976-08-07', 'Rua da Bélgica, nº 33', 'Vila Nova de Gaia', '4400-001', 'Porto', '1945219'),
-('Merico Trindade', '1970-07-11', 'Rua de Benguela, nº 11', 'Barreiro', '2830-001', 'Setúbal', '1001876');
+('Ana Julia', '1987-07-24', 'Rua Ferreira Borges, nº 10', 'Coimbra', '3000-179', 'Coimbra', '123458751'),
+('Maria Amelia', '1988-01-07', 'Avenida da Liberdade, nº 45', 'Lisboa', '1250-096', 'Lisboa', '134575882'),
+('Paula Esteves', '1975-06-17', 'Rua Dr. José de Abreu, nº 12', 'Mafra', '2640-482', 'Lisboa', '144707643'),
+('Teresa Chaves', '1975-05-10', 'Rua 25 de Abril, nº 88', 'Sintra', '2710-520', 'Lisboa', '177781004'),
+('Rosa Neves', '1995-08-16', 'Rua Monte Abraão, nº 5', 'Monte Abraão', '2745-302', 'Lisboa', '122768905'),
+('Carlos Gomes', '1981-11-15', 'Rua de Angola, nº 14', 'Agualva', '2735-100', 'Lisboa', '149579006'),
+('Ruben Sousa', '1987-06-30', 'Rua dos Peregrinos, nº 3', 'Leiria', '2400-001', 'Leiria', '139773207'),
+('Marcos Daniel', '1977-12-24', 'Rua Rainha Ginga, nº 22', 'Porto', '4000-002', 'Porto', '178654308'),
+('Antonio Vaz', '1950-01-01', 'Avenida Lourenço Peixinho, nº 101', 'Aveiro', '3800-159', 'Aveiro', '123458229'),
+('Marcelo Texeira', '1960-03-04', 'Rua do Raio, nº 50', 'Braga', '4700-020', 'Braga', '134275810'),
+('Marlene Chaves', '1964-06-14', 'Rua Direita, nº 15', 'Viseu', '3500-110', 'Viseu', '144707111'),
+('Marcela Nuno', '1944-07-11', 'Rua 19 de Abril, nº 7', 'Setúbal', '2900-123', 'Setúbal', '127781012'),
+('Lucia Neves', '1975-04-28', 'Rua de Olivais, nº 31', 'Lisboa', '1800-001', 'Lisboa', '122768013'),
+('Novoes Mendes', '1945-05-09', 'Rua da Alemanha, nº 4', 'Almada', '2800-010', 'Setúbal', '149572214'),
+('Ruben Tavares', '1981-05-29', 'Avenida do Brasil, nº 200', 'Lisboa', '1700-065', 'Lisboa', '139753215'),
+('Neves Daniel', '1984-09-24', 'Rua do Peregrino, nº 18', 'Faro', '8000-100', 'Faro', '178653316'),
+('Ana Luisa', '1932-02-11', 'Rua de Barcelona, nº 9', 'Cascais', '2750-010', 'Lisboa', '176590617'),
+('Pereira Marcio', '1958-09-04', 'Rua de Moçambique, nº 77', 'Amadora', '2700-001', 'Lisboa', '164401718'),
+('Aguiar Mendes', '1976-08-07', 'Rua da Bélgica, nº 33', 'Vila Nova de Gaia', '4400-001', 'Porto', '194521919'),
+('Merico Trindade', '1970-07-11', 'Rua de Benguela, nº 11', 'Barreiro', '2830-001', 'Setúbal', '100187620');
 
 CREATE TABLE colaborador(
 	idpessoa INT PRIMARY KEY,
 	cargo VARCHAR(50) DEFAULT 'Funcionário',
-	data_admissao DATE,
+	data_admissao DATE DEFAULT (CURRENT_DATE),
 	FOREIGN KEY (idpessoa) REFERENCES pessoa(idpessoa) ON DELETE CASCADE
 );
 
@@ -238,7 +227,7 @@ INSERT INTO colaborador (idpessoa, cargo) VALUES
 
 CREATE TABLE cliente(
 	idpessoa INT PRIMARY KEY,
-	data_registo DATE,
+	data_registo DATE DEFAULT (CURRENT_DATE),
 	FOREIGN KEY (idpessoa) REFERENCES pessoa(idpessoa) ON DELETE RESTRICT
 );
 
@@ -254,7 +243,7 @@ CREATE TABLE fatura(
 	idcolaborador INT NOT NULL,
 	idLoja INT NOT NULL,
 	data_emissao DATETIME DEFAULT CURRENT_TIMESTAMP,
-	valor_total DECIMAL (10,2) DEFAULT 0.00,
+	valor_total DECIMAL(10,2) DEFAULT 0.00,
 	FOREIGN KEY (idcliente) REFERENCES cliente(idpessoa) ON DELETE RESTRICT,
 	FOREIGN KEY (idcolaborador) REFERENCES colaborador(idpessoa) ON DELETE RESTRICT,
 	FOREIGN KEY (idLoja) REFERENCES loja(idLoja) ON DELETE RESTRICT
@@ -265,7 +254,7 @@ CREATE TABLE linha_fatura(
 	idfat INT NOT NULL,
 	idProd INT NOT NULL,
 	quantidade INT NOT NULL CHECK (quantidade > 0),
-	preco_unitario DECIMAL(10,2) NOT NULL,
+	preco_unitario DECIMAL(10,2) NOT NULL CHECK (preco_unitario >= 0),
 	FOREIGN KEY (idfat) REFERENCES fatura(idfat) ON DELETE CASCADE,
 	FOREIGN KEY (idProd) REFERENCES produto(idProd) ON DELETE RESTRICT
 );
@@ -274,11 +263,11 @@ CREATE TABLE linha_fatura(
 
 INSERT INTO fatura (idcliente, idcolaborador, idLoja) VALUES (15, 5, 1);
 
-INSERT INTO linha_fatura (idfat, idProd, quantidade, preco_unitario) VALUES 
+INSERT INTO linha_fatura (idfat, idProd, quantidade, preco_unitario) VALUES
 (1, 1, 10, 0.16),
-(1, 18, 1, 5.51); 
+(1, 18, 1, 5.51);
 
-UPDATE fatura 
+UPDATE fatura
 SET valor_total = (SELECT SUM(quantidade * preco_unitario) FROM linha_fatura WHERE idfat = 1)
 WHERE idfat = 1;
 
