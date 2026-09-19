@@ -5,7 +5,7 @@
 /*																																   */
 /* ------------------------------------------------------------------------------------------------------------------------------- */
 
-DROP DATABASE IF EXISTS LojaComponentes; /* -> Verifica se existe a base de dados, caso exista, é eliminada */
+DROP DATABASE IF EXISTS LojaComponentes;
 CREATE DATABASE LojaComponentes;
 USE LojaComponentes;
 
@@ -22,52 +22,52 @@ INSERT INTO categoriaProduto(nome) VALUES
 
 /* ------------------------------------------------------------------------------------------------------------------------------- */
 
-CREATE TABLE marcasProduto(
+CREATE TABLE marcaProduto(
 	idmarca INT PRIMARY KEY AUTO_INCREMENT,
 	nome VARCHAR(200),
-	morada VARCHAR(200),
-	numfiscal VARCHAR(15)
+	morada VARCHAR(255),
+	numfiscal VARCHAR(30)
 );
 
-INSERT INTO marcasProduto(nome,morada,numfiscal) VALUES
-/* BATOTA */
-('Genérica','NULL','NULL'),
-/* Eletrónica - id 2 a id 19 */
-('Texas Instrumentes','12500 TI Blvd. Dallas Texas 75243 USA','972995201'),
-('Microchip Technology Inc','2355 West Chandler Blvd. Chandler Arizona USA', '972995122'),
-('Analog Divices','2356 West Chandler Blvd. Chandler Arizona USA', '972995223'),
-('Toshiba','72-34, Horikawa-cho, Saiwai-ku Kawasaki-shi Kanagawa 212-8585, Japan', '972995224'),
-('Microship Technology Inc.','2355 West Chandler Blvd. Chandler, Arizona, USA', '972995225'),
-('Vishay Intertechnology, Inc.','Edificio Xi Bloque B Polígono Industrial Mas Blau 08820 El Prat de Llobregat Spain', '972995226'),
-('Velleman, Group.','Legen Heirweg 33, Gavere Belgium ', '0768858127'),
-('Nexperia','Jonkerbosplein 526534 AB Nijmegen The Netherlands ', '0768858128'),
-('Kemo Electronic GmbH','Leher Landstr. 20 D-27607 Geestland-Germany ', '0768858139'),
-('Broadcom','Calle Quintanapalla, 2 Madrid, 28050 Spain ', '0968858339'),
-('AIMTEC','U Prazdroje 2807/8 Pilsen, 301 00 Czech Republic ', '252018160'),
-('SEMTECH ELECTRONICS LIMITED','Semtech Corporation 200 Flynn Road Camarillo, California 93012 USA', '852038960'),
-('Motorola','Semtech Corporation 200 Flynn Road Camarillo, California 93012 USA', '862018964'),
-('SIEMENS','SieMENSTEch Corporation 200 Flynn Road Camarillo, California 93012 Germany', '852048960'),
-('Fairchild','Fairchild Corporation 201 Flynn Road Camarillo, California 93012 USA', '852018960'),
-('STMicroelectronics','STMicroelectronics Corporation 201 Flynn Road Camarillo, California 93012 USA', '852018460'),
-('Arrow Electronics','Arrow Electronics Corporation 201 Flynn Road Camarillo, California 93012 USA', '455017960'),
-/* Automóvel - id 20 a id 27 */
-('AMiO', '63A Knurowska Street 41-800 Zabrze, Poland', 'PL6482786722'),
-('K2', 'ESTADOS UNIDOS', '0000002'),
-('TE Connectivity', 'IRLANDA', '0000003'),
-('TE DEUTSCH', 'ALEMANHA', '0000004'),
-('ELTA', 'REINO UNIDO', '0000005'),
-('EcoFlow', 'ESTADOS UNIDOS', '0000006'),
-('Högert', 'ALEMANHA', '0000007'),
-/* Domótica - id 28 a id 35 */
-('Amazon', '410 Terry Ave N, Seattle, WA 98109 USA', '0000008'),
-('Aqara', 'Shenzhen China', '0000009'),
-('BroadLink', '57 Jianger Road, Binjiang District, Hangzhou, China', '0000010'),
-('Danalock', 'Grønhøjvej 64 A, 8462 Harlev, Denmark', '0000011'),
-('Sonoff', 'Shenzhen, Guangdong Province, China', '0000013'),
-/* Baterias - id 36 a id 38 */
-('Raspberry PI', 'Cambridge, 37 Hills Rd, United Kingdom', '00000014'),
-('Phasak', 'C/ El Pensamiento 27, Escalera Izquierda, 28020 Madrid, Spain', '00000015'),
-('Green Cell', 'Kalwaryjska 33, PL-30-509 Krakow, Poland', '00000016');
+INSERT INTO marcaProduto(nome, morada, numfiscal) VALUES
+/* BATOTA / Genérica - id 1 */
+('Genérica', NULL, NULL),
+/* Eletrónica - id 2 a id 18 */
+('Texas Instruments', '12500 TI Blvd, Dallas, TX 75243, USA', 'US750272200'),
+('Microchip Technology Inc', '2355 W Chandler Blvd, Chandler, AZ 85224, USA', 'US860629024'),
+('Analog Devices', '1 Analog Way, Wilmington, MA 01887, USA', 'US042234820'),
+('Toshiba', '1-1-1 Shibaura, Minato-ku, Tokyo 105-8001, Japan', 'JP1010401022285'),
+('NXP Semiconductors', 'High Tech Campus 60, 5656 AG Eindhoven, Netherlands', 'NL815887290B01'),
+('Vishay Intertechnology, Inc.', '63 Lancaster Ave, Malvern, PA 19355, USA', 'US381686453'),
+('Velleman Group', 'Legen Heirweg 33, 9890 Gavere, Belgium', 'BE0437555062'),
+('Nexperia', 'Jonkerbosplein 52, 6534 AB Nijmegen, Netherlands', 'NL857243911B01'),
+('Kemo Electronic GmbH', 'Leher Landstr. 20, D-27607 Geestland, Germany', 'DE116155982'),
+('Broadcom', '1320 Ridder Park Dr, San Jose, CA 95131, USA', 'US352061033'),
+('AIMTEC', 'U Prazdroje 2807/8, 301 00 Plzeň, Czech Republic', 'CZ25201816'),
+('SEMTECH ELECTRONICS LIMITED', '200 Flynn Rd, Camarillo, CA 93012, USA', 'US952216707'),
+('Motorola', '222 W Merchandise Mart Plaza, Chicago, IL 60654, USA', 'US361115800'),
+('SIEMENS', 'Werner-von-Siemens-Straße 1, 80333 Munich, Germany', 'DE129274282'),
+('Fairchild', '82 Running Hill Rd, South Portland, ME 04106, USA', 'US010211516'),
+('STMicroelectronics', '39 Chemin du Champ-des-Filles, 1228 Plan-les-Ouates, Geneva, Switzerland', 'CHE106038472'),
+('Arrow Electronics', '9201 E Dry Creek Rd, Centennial, CO 80112, USA', 'US111806155'),
+/* Automóvel - id 19 a id 25 */
+('AMiO', 'ul. Knurowska 63A, 41-800 Zabrze, Poland', 'PL6482786722'),
+('K2 (Melle Sp. z o.o.)', 'Stary Staw 9, 63-400 Ostrów Wielkopolski, Poland', 'PL6222301004'),
+('TE Connectivity', '10 Earlsfort Terrace, Dublin 2, D02 T380, Ireland', 'IE9513361O'),
+('TE DEUTSCH', 'Amperestraße 12-14, 64625 Bensheim, Germany', 'DE111627883'),
+('ELTA Automotive Ltd', 'Express House, Phoenix Way, Halesowen, B62 8JZ, United Kingdom', 'GB485458002'),
+('EcoFlow', '100 Bayview Point, Suite 100, San Mateo, CA 94402, USA', 'US824092817'),
+('Högert Technik', 'ul. Przyszłości 21, 05-800 Pruszków, Poland', 'PL5342505912'),
+/* Domótica - id 26 a id 30 */
+('Amazon', '410 Terry Ave N, Seattle, WA 98109, USA', 'LU26375245'),
+('Aqara (Lumi United Tech)', '8th Floor, Bldg 1, Chongwen Park, Nanshan iPark, Shenzhen, China', 'CN914403000539829283'),
+('BroadLink', '57 Jianger Road, Binjiang District, Hangzhou, Zhejiang, China', 'CN91330108072120032N'),
+('Danalock ApS', 'Grønhøjvej 68, 8462 Harlev, Denmark', 'DK31613291'),
+('Sonoff (Shenzhen Sonoff Tech)', '1001, BLDG 8, Lianhua Industrial Park, Longhua District, Shenzhen, China', 'CN91440300359892182B'),
+/* Baterias - id 31 a id 33 */
+('Raspberry Pi Ltd', 'Maurice Wilkes Building, St John''s Innovation Park, Cambridge CB4 0DS, UK', 'GB126304979'),
+('Phasak', 'Calle El Pensamiento 27, 28020 Madrid, Spain', 'ESB84521908'),
+('Green Cell (CSG S.A.)', 'ul. Kalwaryjska 33, 30-509 Kraków, Poland', 'PL6793089012');
 
 /* ------------------------------------------------------------------------------------------------------------------------------- */
 
@@ -75,7 +75,7 @@ CREATE TABLE tipoProduto(
 	idtipo INT PRIMARY KEY AUTO_INCREMENT,
 	nome VARCHAR(100),
 	idcat INT,
-	FOREIGN KEY (idcat) REFERENCES categoriaProduto(idcat) 
+	FOREIGN KEY (idcat) REFERENCES categoriaProduto(idcat)
 );
 
 INSERT INTO tipoProduto(nome,idcat) VALUES
@@ -120,7 +120,7 @@ INSERT INTO tipoProduto(nome,idcat) VALUES
 
 /* ------------------------------------------------------------------------------------------------------------------------------- */
 
-CREATE TABLE produtos(
+CREATE TABLE produto(
 	idProd INT PRIMARY KEY AUTO_INCREMENT,
 	numref VARCHAR(20) NULL UNIQUE,
 	nome VARCHAR(255),
@@ -130,10 +130,10 @@ CREATE TABLE produtos(
 	idtipo INT,
 	idmarca INT,
 	FOREIGN KEY (idtipo) REFERENCES tipoProduto(idtipo),
-	FOREIGN KEY (idmarca) REFERENCES marcasProduto(idmarca)
+	FOREIGN KEY (idmarca) REFERENCES marcaProduto(idmarca)
 );
 
-INSERT INTO produtos(numref,nome,descricao,preco,dimensoes,idtipo,idmarca) VALUES
+INSERT INTO produto(numref,nome,descricao,preco,dimensoes,idtipo,idmarca) VALUES
 /* Eletrónica */
 ('031-0071','Bobina de indutância axial 1000uH/1mH 60mA Ø3x8mm','Indutor axial com montagem THT, capaz de fornecer 1000 µH de indutância',0.16,'3x8',1,1),
 ('001-0109','Circuito Integrado NE555','K40472',0.53,'3x8',2,1),
@@ -170,69 +170,81 @@ INSERT INTO produtos(numref,nome,descricao,preco,dimensoes,idtipo,idmarca) VALUE
 ('5056561803739', 'Raspberry Pi SC1163 - Bateria de Backup para o RTC do Raspberry Pi 5', 'O IC de gestão de energia utilizado numa placa integra um relógio de tempo real e um circuito de carregamento', 5.99, NULL, 30, 31),
 ('5605922047222', 'Phasak PHB 1209 - Bateria de Chumbo (Pb) 12V 9.0Ah (term. largos)', 'A Phasak PHB 1209 é uma bateria selada de chumbo-ácido (VRLA) de 12V e 9Ah', 17.00, NULL, 31, 32),
 ('5904326374874', 'Green Cell LFPGC12V20AH - Bateria de Lithium (LiFePO4) BMS 12.8V 256Wh 20A', 'Bateria de lítio LiFePO4 de alta eficiência com BMS integrado 12.8V 256Wh', 85.90, NULL, 32, 33),
-('8436300862703', 'Bateria 3.7v 250mAH Li-Po 20x30x5mm', 'Bateria de lítio recarregável com 3,7 V e 250 mAh, ideal para dispositivos compactos, oferecendo desempenho estável.', 5.85, '20x30x5mm', 33, 31),
+('8436300862703', 'Bateria 3.7v 250mAH Li-Po 20x30x5mm', 'Bateria de lítio recarregável com 3,7 V e 250 mAh, ideal para dispositivos compactos, oferecendo desempenho estável.', 5.85, '20x30x5mm', 33, 1),
 ('4047038305895', 'Bateria para aspirador compatível com Dirt Devil Libero M606 14.4V 800mAh 11,5Wh NiMH', 'Esta bateria de substituição NiMH de 14,4V oferece 800mAh e 11,5Wh de energia para aspiradores Dirt Devil', 20.27, NULL, 34, 32);
 
 /* ------------------------------------------------------------------------------------------------------------------------------- */
 
-CREATE TABLE pessoas(
+CREATE TABLE loja(
+	idLoja INT PRIMARY KEY AUTO_INCREMENT,
+	nome VARCHAR(100),
+	rua VARCHAR(255),
+	localidade VARCHAR(255),
+	codigo_postal VARCHAR(100),
+	distrito VARCHAR(255)
+);
+
+INSERT INTO loja (nome,rua,localidade,codigo_postal,distrito) VALUES
+('Loja de Leiria', 'Rua D. João III, nº 42', 'Leiria', '2400-150', 'Leiria'),
+('Loja de Lisboa', 'Avenida da Liberdade, nº 120', 'Lisboa', '1250-146', 'Lisboa'),
+('Loja do Porto', 'Rua de Santa Catarina, nº 300', 'Porto', '4000-443', 'Porto'),
+('Loja de Coimbra', 'Avenida Fernão de Magalhães, nº 85', 'Coimbra', '3000-176', 'Coimbra');
+
+/* ------------------------------------------------------------------------------------------------------------------------------- */
+
+CREATE TABLE pessoa(
 	idpessoa INT PRIMARY KEY AUTO_INCREMENT,
 	nome VARCHAR(100),
 	datanascimento DATE,
-	morada VARCHAR(200),
+	rua VARCHAR(100) NOT NULL,
+	localidade VARCHAR(100) NOT NULL,
+	codigo_postal VARCHAR(100) NOT NULL,
+	distrito VARCHAR(200) NOT NULL,
 	ncontribuinte VARCHAR(15) NOT NULL UNIQUE
 );
 
-INSERT INTO pessoas (nome,datanascimento,morada,ncontribuinte)VALUES
-('Ana Julia', '1987-07-24', 'Coimbra',  '12345875'),
-('Maria Amelia', '1988-01-07', 'Lisboa', '13457588'),
-('Paula Esteves', '1975-06-17', ' Mafra', '14470764'),
-('Teresa Chaves', '1975-05-10', 'Rua 25-de Abril', '1777810'),
-('Rosa Neves', '1995-08-16', 'Rua monte abraao', '1227689'),
-('Carlos Gomes', '1981-11-15', 'Rua da Angola', '1495790'),
-('Ruben Sousa', '1987-06-30', 'Rua Pregritos',  '1397732'),
-('Marcos Daniel', '1977-12-24', 'Rua Njinga', '1786543'),
-('Antonio Vaz', '1950-01-01', 'Aveiro', '12345822'),
-('Marcelo Texeira', '1960-03-04', 'Braga', '13427588'),
-('Marlene Chaves', '1964-06-14', ' Viseu', '14470711'),
-('Marcela Nuno', '1944-07-11', 'Rua 19-de Abril', '1277810'),
-('Lucia Neves', '1975-04-28', 'Rua Olivaça', '12276801'),
-('Novoes Mendes', '1945-05-09', 'Rua da Alemanha', '1495722'),
-('Ruben Tavares', '1981-05-29', 'Rua Avenida-Brasil', '1397532'),
-('Neves Daniel', '1984-09-24', 'Rua Perigrino', '1786533'),
-('Ana Luisa', '1932-02-11', 'Rua Barcelona', '1765906'),
-('Pereira Marcio', '1958-09-04', 'Rua Moçabique', '1644017'),
-('Aguiar Mendes',  '1976-08-07', 'Rua Belgica', '1945219'),
-('Merico Trindade', '1970-07-11', 'Rua Benguela', '1001876');
+INSERT INTO pessoa (nome, datanascimento, rua, localidade, codigo_postal, distrito, ncontribuinte) VALUES
+('Ana Julia', '1987-07-24', 'Rua Ferreira Borges, nº 10', 'Coimbra', '3000-179', 'Coimbra', '12345875'),
+('Maria Amelia', '1988-01-07', 'Avenida da Liberdade, nº 45', 'Lisboa', '1250-096', 'Lisboa', '13457588'),
+('Paula Esteves', '1975-06-17', 'Rua Dr. José de Abreu, nº 12', 'Mafra', '2640-482', 'Lisboa', '14470764'),
+('Teresa Chaves', '1975-05-10', 'Rua 25 de Abril, nº 88', 'Sintra', '2710-520', 'Lisboa', '1777810'),
+('Rosa Neves', '1995-08-16', 'Rua Monte Abraão, nº 5', 'Monte Abraão', '2745-302', 'Lisboa', '1227689'),
+('Carlos Gomes', '1981-11-15', 'Rua de Angola, nº 14', 'Agualva', '2735-100', 'Lisboa', '1495790'),
+('Ruben Sousa', '1987-06-30', 'Rua dos Peregrinos, nº 3', 'Leiria', '2400-001', 'Leiria', '1397732'),
+('Marcos Daniel', '1977-12-24', 'Rua Rainha Ginga, nº 22', 'Porto', '4000-002', 'Porto', '1786543'),
+('Antonio Vaz', '1950-01-01', 'Avenida Lourenço Peixinho, nº 101', 'Aveiro', '3800-159', 'Aveiro', '12345822'),
+('Marcelo Texeira', '1960-03-04', 'Rua do Raio, nº 50', 'Braga', '4700-020', 'Braga', '13427588'),
+('Marlene Chaves', '1964-06-14', 'Rua Direita, nº 15', 'Viseu', '3500-110', 'Viseu', '14470711'),
+('Marcela Nuno', '1944-07-11', 'Rua 19 de Abril, nº 7', 'Setúbal', '2900-123', 'Setúbal', '1277810'),
+('Lucia Neves', '1975-04-28', 'Rua de Olivais, nº 31', 'Lisboa', '1800-001', 'Lisboa', '12276801'),
+('Novoes Mendes', '1945-05-09', 'Rua da Alemanha, nº 4', 'Almada', '2800-010', 'Setúbal', '1495722'),
+('Ruben Tavares', '1981-05-29', 'Avenida do Brasil, nº 200', 'Lisboa', '1700-065', 'Lisboa', '1397532'),
+('Neves Daniel', '1984-09-24', 'Rua do Peregrino, nº 18', 'Faro', '8000-100', 'Faro', '1786533'),
+('Ana Luisa', '1932-02-11', 'Rua de Barcelona, nº 9', 'Cascais', '2750-010', 'Lisboa', '1765906'),
+('Pereira Marcio', '1958-09-04', 'Rua de Moçambique, nº 77', 'Amadora', '2700-001', 'Lisboa', '1644017'),
+('Aguiar Mendes', '1976-08-07', 'Rua da Bélgica, nº 33', 'Vila Nova de Gaia', '4400-001', 'Porto', '1945219'),
+('Merico Trindade', '1970-07-11', 'Rua de Benguela, nº 11', 'Barreiro', '2830-001', 'Setúbal', '1001876');
 
-CREATE TABLE colaboradores(
-idpessoa INT PRIMARY KEY,
-cargo VARCHAR(50) DEFAULT 'Funcionário',
-data_admissao DATE,
-FOREIGN KEY (idpessoa) REFERENCES pessoas(idpessoa) ON DELETE CASCADE
+CREATE TABLE colaborador(
+	idpessoa INT PRIMARY KEY,
+	cargo VARCHAR(50) DEFAULT 'Funcionário',
+	data_admissao DATE,
+	FOREIGN KEY (idpessoa) REFERENCES pessoa(idpessoa) ON DELETE CASCADE
 );
 
-INSERT INTO colaboradores (idpessoa, cargo) VALUES
-('5', 'Gerente de loja'),
-('8', 'Administrador de IT');
+INSERT INTO colaborador (idpessoa, cargo) VALUES
+(5, 'Gerente de loja'),
+(8, 'Administrador de IT');
 
 CREATE TABLE cliente(
-idpessoa INT PRIMARY KEY,
-data_registo DATE,
-FOREIGN KEY (idpessoa) REFERENCES pessoas(idpessoa) ON DELETE RESTRICT
+	idpessoa INT PRIMARY KEY,
+	data_registo DATE,
+	FOREIGN KEY (idpessoa) REFERENCES pessoa(idpessoa) ON DELETE RESTRICT
 );
 
 INSERT INTO cliente (idpessoa) VALUES
-('5'),
-('15');
-/* ------------------------------------------------------------------------------------------------------------------------------- */
-
-CREATE TABLE lojas(
-	idLoja INT PRIMARY KEY AUTO_INCREMENT,
-	rua VARCHAR(255),
-	localidade VARCHAR(255),
-	distrito VARCHAR(255)
-);
+(5),
+(15);
 
 /* ------------------------------------------------------------------------------------------------------------------------------- */
 
@@ -240,10 +252,12 @@ CREATE TABLE fatura(
 	idfat INT PRIMARY KEY AUTO_INCREMENT,
 	idcliente INT NOT NULL,
 	idcolaborador INT NOT NULL,
+	idLoja INT NOT NULL,
 	data_emissao DATETIME DEFAULT CURRENT_TIMESTAMP,
-	Valor_total DECIMAL (10,2) DEFAULT 0.00,
+	valor_total DECIMAL (10,2) DEFAULT 0.00,
 	FOREIGN KEY (idcliente) REFERENCES cliente(idpessoa) ON DELETE RESTRICT,
-	FOREIGN KEY (idcolaborador) REFERENCES colaboradores(idpessoa) ON DELETE RESTRICT
+	FOREIGN KEY (idcolaborador) REFERENCES colaborador(idpessoa) ON DELETE RESTRICT,
+	FOREIGN KEY (idLoja) REFERENCES loja(idLoja) ON DELETE RESTRICT
 );
 
 CREATE TABLE linha_fatura(
@@ -253,13 +267,12 @@ CREATE TABLE linha_fatura(
 	quantidade INT NOT NULL CHECK (quantidade > 0),
 	preco_unitario DECIMAL(10,2) NOT NULL,
 	FOREIGN KEY (idfat) REFERENCES fatura(idfat) ON DELETE CASCADE,
-	FOREIGN KEY (idProd) REFERENCES produtos(idProd) ON DELETE RESTRICT
+	FOREIGN KEY (idProd) REFERENCES produto(idProd) ON DELETE RESTRICT
 );
 
 /* ------------------------------------------------------------------------------------------------------------------------------- */
 
-/* FOI USADO IA PARA A QUERY*/
-INSERT INTO fatura (idcliente, idcolaborador) VALUES (15, 5);
+INSERT INTO fatura (idcliente, idcolaborador, idLoja) VALUES (15, 5, 1);
 
 INSERT INTO linha_fatura (idfat, idProd, quantidade, preco_unitario) VALUES 
 (1, 1, 10, 0.16),
@@ -268,22 +281,5 @@ INSERT INTO linha_fatura (idfat, idProd, quantidade, preco_unitario) VALUES
 UPDATE fatura 
 SET valor_total = (SELECT SUM(quantidade * preco_unitario) FROM linha_fatura WHERE idfat = 1)
 WHERE idfat = 1;
-
-SELECT 
-    f.idfat, 
-    p_cli.nome AS cliente, 
-    p_cli.ncontribuinte AS contribuinte, 
-    p_col.nome AS colaborador, 
-    prod.nome AS produto, 
-    lf.quantidade, 
-    lf.preco_unitario, 
-    (lf.quantidade * lf.preco_unitario) AS subtotal,
-    f.valor_total AS total_fatura
-FROM fatura f
-INNER JOIN pessoas p_cli ON f.idcliente = p_cli.idpessoa
-INNER JOIN pessoas p_col ON f.idcolaborador = p_col.idpessoa
-INNER JOIN linha_fatura lf ON f.idfat = lf.idfat
-INNER JOIN produtos prod ON lf.idProd = prod.idProd
-WHERE f.idfat = 1;
 
 /* ------------------------------------------------------------------------------------------------------------------------------- */
