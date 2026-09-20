@@ -2,19 +2,14 @@
 /*                                                                                                                                 */
 /*                                            TRABALHO DE SQL - UC02830                                                            */
 /*                                 DESENVOLVIDO POR RUBEN DUARTE, CARLOS GOMES E ROSA BORGES                                       */
-/*                                                                                                                                 */
+/*                                                  MODULO 2 - INSERT                                                              */
 /* ------------------------------------------------------------------------------------------------------------------------------- */
 
-DROP DATABASE IF EXISTS LojaComponentes;
-CREATE DATABASE LojaComponentes CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
 USE LojaComponentes;
 
 /* ------------------------------------------------------------------------------------------------------------------------------- */
 
-CREATE TABLE categoriaProduto(
-	idcat INT PRIMARY KEY AUTO_INCREMENT,
-	nome VARCHAR(200) NOT NULL UNIQUE
-);
+/* categoriaProduto */
 
 INSERT INTO categoriaProduto(nome) VALUES
 ('Eletrónica'),
@@ -24,12 +19,7 @@ INSERT INTO categoriaProduto(nome) VALUES
 
 /* ------------------------------------------------------------------------------------------------------------------------------- */
 
-CREATE TABLE marcaProduto(
-	idmarca INT PRIMARY KEY AUTO_INCREMENT,
-	nome VARCHAR(200) NOT NULL,
-	morada VARCHAR(255),
-	numfiscal VARCHAR(30)
-);
+/* marcaProduto */
 
 INSERT INTO marcaProduto(nome, morada, numfiscal) VALUES
 ('Genérica', NULL, NULL),
@@ -68,13 +58,7 @@ INSERT INTO marcaProduto(nome, morada, numfiscal) VALUES
 
 /* ------------------------------------------------------------------------------------------------------------------------------- */
 
-CREATE TABLE tipoProduto(
-	idtipo INT PRIMARY KEY AUTO_INCREMENT,
-	nome VARCHAR(100) NOT NULL,
-	idcat INT NOT NULL,
-	FOREIGN KEY (idcat) REFERENCES categoriaProduto(idcat) ON DELETE RESTRICT
-);
-
+/* tipoProduto */
 INSERT INTO tipoProduto(nome, idcat) VALUES
 ('Bobines de indutância', 1),
 ('Circuitos Integrados', 1),
@@ -113,19 +97,7 @@ INSERT INTO tipoProduto(nome, idcat) VALUES
 
 /* ------------------------------------------------------------------------------------------------------------------------------- */
 
-CREATE TABLE produto(
-	idProd INT PRIMARY KEY AUTO_INCREMENT,
-	ean VARCHAR(20) UNIQUE,
-	numref VARCHAR(20) UNIQUE,
-	nome VARCHAR(255) NOT NULL,
-	descricao VARCHAR(500),
-	preco DECIMAL(10,2) NOT NULL CHECK (preco >= 0),
-	dimensoes VARCHAR(100),
-	idtipo INT NOT NULL,
-	idmarca INT NOT NULL,
-	FOREIGN KEY (idtipo) REFERENCES tipoProduto(idtipo) ON DELETE RESTRICT,
-	FOREIGN KEY (idmarca) REFERENCES marcaProduto(idmarca) ON DELETE RESTRICT
-);
+/* produto */
 
 INSERT INTO produto(ean, numref, nome, descricao, preco, dimensoes, idtipo, idmarca) VALUES
 (NULL, '031-0071', 'Bobina de indutância axial 1000uH/1mH 60mA Ø3x8mm', 'Indutor axial com montagem THT, capaz de fornecer 1000 µH de indutância', 0.16, '3x8', 1, 1),
@@ -165,14 +137,7 @@ INSERT INTO produto(ean, numref, nome, descricao, preco, dimensoes, idtipo, idma
 
 /* ------------------------------------------------------------------------------------------------------------------------------- */
 
-CREATE TABLE loja(
-	idLoja INT PRIMARY KEY AUTO_INCREMENT,
-	nome VARCHAR(100) NOT NULL,
-	rua VARCHAR(255) NOT NULL,
-	localidade VARCHAR(255) NOT NULL,
-	codigo_postal VARCHAR(100) NOT NULL,
-	distrito VARCHAR(255) NOT NULL
-);
+/* loja */
 
 INSERT INTO loja (nome, rua, localidade, codigo_postal, distrito) VALUES
 ('Loja de Leiria', 'Rua D. João III, nº 42', 'Leiria', '2400-150', 'Leiria'),
@@ -182,16 +147,68 @@ INSERT INTO loja (nome, rua, localidade, codigo_postal, distrito) VALUES
 
 /* ------------------------------------------------------------------------------------------------------------------------------- */
 
-CREATE TABLE pessoa(
-	idpessoa INT PRIMARY KEY AUTO_INCREMENT,
-	nome VARCHAR(100) NOT NULL,
-	datanascimento DATE,
-	rua VARCHAR(100) NOT NULL,
-	localidade VARCHAR(100) NOT NULL,
-	codigo_postal VARCHAR(100) NOT NULL,
-	distrito VARCHAR(200) NOT NULL,
-	ncontribuinte VARCHAR(15) NOT NULL UNIQUE
-);
+/* armazem */
+
+INSERT INTO armazem(nome, rua, localidade, codigo_postal, distrito) VALUES
+('Armazém Central Norte', 'Zona Industrial de Braga, Lote 42', 'Braga', '4705-808', 'Braga'),
+('Armazém Logístico Centro', 'Avenida Principal, nº 100', 'Leiria', '2400-123', 'Leiria'),
+('Armazém Sul e Ilhas', 'Park Logístico de Lisboa, Armazém 3', 'Lisboa', '1990-205', 'Lisboa'),
+('Armazém Regional Algarve', 'Estrada Nacional 125, Km 95', 'Faro', '8005-515', 'Faro');
+
+/* ------------------------------------------------------------------------------------------------------------------------------- */
+
+/* stock */
+
+INSERT INTO stock (idProd, idArmazem, quantidade) VALUES
+(1, 1, 150),
+(1, 2, 80),
+(2, 1, 200),
+(2, 3, 45),
+(3, 1, 500),
+(3, 2, 300),
+(3, 4, 120),
+(4, 1, 75),
+(5, 2, 30),
+(5, 3, 50),
+(6, 1, 120),
+(6, 4, 60),
+(7, 2, 90),
+(8, 1, 150),
+(9, 3, 25),
+(10, 1, 200),
+(10, 2, 110),
+(11, 1, 350),
+(11, 3, 180),
+(12, 1, 1000),
+(12, 2, 450),
+(12, 4, 300),
+(13, 2, 85),
+(14, 1, 60),
+(15, 3, 40),
+(16, 1, 55),
+(17, 2, 15),
+(18, 1, 40),
+(18, 3, 35),
+(19, 2, 50),
+(20, 1, 110),
+(21, 1, 220),
+(22, 2, 70),
+(23, 3, 10),
+(24, 1, 25),
+(25, 3, 30),
+(26, 4, 45),
+(27, 2, 60),
+(28, 1, 12),
+(29, 3, 85),
+(30, 1, 90),
+(31, 2, 40),
+(32, 3, 20),
+(33, 1, 150),
+(34, 2, 25);
+
+/* ------------------------------------------------------------------------------------------------------------------------------- */
+
+/* pessoa */
 
 INSERT INTO pessoa (nome, datanascimento, rua, localidade, codigo_postal, distrito, ncontribuinte) VALUES
 ('Ana Julia', '1987-07-24', 'Rua Ferreira Borges, nº 10', 'Coimbra', '3000-179', 'Coimbra', '123458751'),
@@ -215,22 +232,17 @@ INSERT INTO pessoa (nome, datanascimento, rua, localidade, codigo_postal, distri
 ('Aguiar Mendes', '1976-08-07', 'Rua da Bélgica, nº 33', 'Vila Nova de Gaia', '4400-001', 'Porto', '194521919'),
 ('Merico Trindade', '1970-07-11', 'Rua de Benguela, nº 11', 'Barreiro', '2830-001', 'Setúbal', '100187620');
 
-CREATE TABLE colaborador(
-	idpessoa INT PRIMARY KEY,
-	cargo VARCHAR(50) DEFAULT 'Funcionário',
-	data_admissao DATE DEFAULT (CURRENT_DATE),
-	FOREIGN KEY (idpessoa) REFERENCES pessoa(idpessoa) ON DELETE CASCADE
-);
+/* ------------------------------------------------------------------------------------------------------------------------------- */
+
+/* colaborador
 
 INSERT INTO colaborador (idpessoa, cargo) VALUES
 (5, 'Gerente de loja'),
 (8, 'Administrador de IT');
 
-CREATE TABLE cliente(
-	idpessoa INT PRIMARY KEY,
-	data_registo DATE DEFAULT (CURRENT_DATE),
-	FOREIGN KEY (idpessoa) REFERENCES pessoa(idpessoa) ON DELETE RESTRICT
-);
+/* ------------------------------------------------------------------------------------------------------------------------------- */
+
+/* colaborador */
 
 INSERT INTO cliente (idpessoa) VALUES
 (5),
@@ -238,31 +250,14 @@ INSERT INTO cliente (idpessoa) VALUES
 
 /* ------------------------------------------------------------------------------------------------------------------------------- */
 
-CREATE TABLE fatura(
-	idfat INT PRIMARY KEY AUTO_INCREMENT,
-	idcliente INT NOT NULL,
-	idcolaborador INT NOT NULL,
-	idLoja INT NOT NULL,
-	data_emissao DATETIME DEFAULT CURRENT_TIMESTAMP,
-	valor_total DECIMAL(10,2) DEFAULT 0.00,
-	FOREIGN KEY (idcliente) REFERENCES cliente(idpessoa) ON DELETE RESTRICT,
-	FOREIGN KEY (idcolaborador) REFERENCES colaborador(idpessoa) ON DELETE RESTRICT,
-	FOREIGN KEY (idLoja) REFERENCES loja(idLoja) ON DELETE RESTRICT
-);
+/* fatura */
 
-CREATE TABLE linha_fatura(
-	idlinha INT PRIMARY KEY AUTO_INCREMENT,
-	idfat INT NOT NULL,
-	idProd INT NOT NULL,
-	quantidade INT NOT NULL CHECK (quantidade > 0),
-	preco_unitario DECIMAL(10,2) NOT NULL CHECK (preco_unitario >= 0),
-	FOREIGN KEY (idfat) REFERENCES fatura(idfat) ON DELETE CASCADE,
-	FOREIGN KEY (idProd) REFERENCES produto(idProd) ON DELETE RESTRICT
-);
+INSERT INTO fatura (idcliente, idcolaborador, idLoja) VALUES
+(15, 5, 1);
 
 /* ------------------------------------------------------------------------------------------------------------------------------- */
 
-INSERT INTO fatura (idcliente, idcolaborador, idLoja) VALUES (15, 5, 1);
+/* linha_fatura */
 
 INSERT INTO linha_fatura (idfat, idProd, quantidade, preco_unitario) VALUES
 (1, 1, 10, 0.16),
@@ -271,5 +266,3 @@ INSERT INTO linha_fatura (idfat, idProd, quantidade, preco_unitario) VALUES
 UPDATE fatura
 SET valor_total = (SELECT SUM(quantidade * preco_unitario) FROM linha_fatura WHERE idfat = 1)
 WHERE idfat = 1;
-
-/* ------------------------------------------------------------------------------------------------------------------------------- */
