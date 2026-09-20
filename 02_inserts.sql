@@ -234,7 +234,7 @@ INSERT INTO pessoa (nome, datanascimento, rua, localidade, codigo_postal, distri
 
 /* ------------------------------------------------------------------------------------------------------------------------------- */
 
-/* colaborador
+/* colaborador */
 
 INSERT INTO colaborador (idpessoa, cargo) VALUES
 (5, 'Gerente de loja'),
@@ -242,7 +242,7 @@ INSERT INTO colaborador (idpessoa, cargo) VALUES
 
 /* ------------------------------------------------------------------------------------------------------------------------------- */
 
-/* colaborador */
+/* cliente */
 
 INSERT INTO cliente (idpessoa) VALUES
 (5),
