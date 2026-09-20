@@ -6,6 +6,20 @@
 /* ------------------------------------------------------------------------------------------------------------------------------- */
 
 USE LojaComponentes;
+SET FOREIGN_KEY_CHECKS = 0;
+TRUNCATE TABLE categoriaProduto;
+TRUNCATE TABLE marcaProduto;
+TRUNCATE TABLE tipoProduto;
+TRUNCATE TABLE produto; 
+TRUNCATE TABLE loja; 
+TRUNCATE TABLE armazem;
+TRUNCATE TABLE stock;
+TRUNCATE TABLE pessoa;
+TRUNCATE TABLE colaborador;
+TRUNCATE TABLE cliente;
+TRUNCATE TABLE fatura;
+TRUNCATE TABLE linha_fatura;
+SET FOREIGN_KEY_CHECKS = 1;
 
 /* ------------------------------------------------------------------------------------------------------------------------------- */
 
