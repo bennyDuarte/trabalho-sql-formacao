@@ -182,6 +182,81 @@ INSERT INTO loja (nome, rua, localidade, codigo_postal, distrito) VALUES
 
 /* ------------------------------------------------------------------------------------------------------------------------------- */
 
+CREATE TABLE armazem(
+	idArmazem INT PRIMARY KEY AUTO_INCREMENT,
+	nome VARCHAR(100) NOT NULL,
+	rua VARCHAR(255) NOT NULL,
+	localidade VARCHAR(255) NOT NULL,
+	codigo_postal VARCHAR(100) NOT NULL,
+	distrito VARCHAR(255) NOT NULL
+);
+
+INSERT INTO armazem(nome, rua, localidade, codigo_postal, distrito) VALUES
+('Armazém Central Norte', 'Zona Industrial de Braga, Lote 42', 'Braga', '4705-808', 'Braga'),
+('Armazém Logístico Centro', 'Avenida Principal, nº 100', 'Leiria', '2400-123', 'Leiria'),
+('Armazém Sul e Ilhas', 'Park Logístico de Lisboa, Armazém 3', 'Lisboa', '1990-205', 'Lisboa'),
+('Armazém Regional Algarve', 'Estrada Nacional 125, Km 95', 'Faro', '8005-515', 'Faro');
+
+/* ------------------------------------------------------------------------------------------------------------------------------- */
+
+CREATE TABLE stock(
+	idProd INT NOT NULL,
+	idArmazem INT NOT NULL, 
+	quantidade INT NOT NULL CHECK (quantidade >= 0),
+	PRIMARY KEY (idProd, idArmazem),
+	FOREIGN KEY (idProd) REFERENCES produto(idProd) ON DELETE RESTRICT,
+	FOREIGN KEY (idArmazem) REFERENCES armazem(idArmazem) ON DELETE RESTRICT
+);
+
+INSERT INTO stock (idProd, idArmazem, quantidade) VALUES
+(1, 1, 150),
+(1, 2, 80),
+(2, 1, 200),
+(2, 3, 45),
+(3, 1, 500),
+(3, 2, 300),
+(3, 4, 120),
+(4, 1, 75),
+(5, 2, 30),
+(5, 3, 50),
+(6, 1, 120),
+(6, 4, 60),
+(7, 2, 90),
+(8, 1, 150),
+(9, 3, 25),
+(10, 1, 200),
+(10, 2, 110),
+(11, 1, 350),
+(11, 3, 180),
+(12, 1, 1000),
+(12, 2, 450),
+(12, 4, 300),
+(13, 2, 85),
+(14, 1, 60),
+(15, 3, 40),
+(16, 1, 55),
+(17, 2, 15),
+(18, 1, 40),
+(18, 3, 35),
+(19, 2, 50),
+(20, 1, 110),
+(21, 1, 220),
+(22, 2, 70),
+(23, 3, 10),
+(24, 1, 25),
+(25, 3, 30),
+(26, 4, 45),
+(27, 2, 60),
+(28, 1, 12),
+(29, 3, 85),
+(30, 1, 90),
+(31, 2, 40),
+(32, 3, 20),
+(33, 1, 150),
+(34, 2, 25);
+
+/* ------------------------------------------------------------------------------------------------------------------------------- */
+
 CREATE TABLE pessoa(
 	idpessoa INT PRIMARY KEY AUTO_INCREMENT,
 	nome VARCHAR(100) NOT NULL,
@@ -215,6 +290,8 @@ INSERT INTO pessoa (nome, datanascimento, rua, localidade, codigo_postal, distri
 ('Aguiar Mendes', '1976-08-07', 'Rua da Bélgica, nº 33', 'Vila Nova de Gaia', '4400-001', 'Porto', '194521919'),
 ('Merico Trindade', '1970-07-11', 'Rua de Benguela, nº 11', 'Barreiro', '2830-001', 'Setúbal', '100187620');
 
+/* ------------------------------------------------------------------------------------------------------------------------------- */
+
 CREATE TABLE colaborador(
 	idpessoa INT PRIMARY KEY,
 	cargo VARCHAR(50) DEFAULT 'Funcionário',
@@ -225,6 +302,8 @@ CREATE TABLE colaborador(
 INSERT INTO colaborador (idpessoa, cargo) VALUES
 (5, 'Gerente de loja'),
 (8, 'Administrador de IT');
+
+/* ------------------------------------------------------------------------------------------------------------------------------- */
 
 CREATE TABLE cliente(
 	idpessoa INT PRIMARY KEY,
@@ -250,6 +329,11 @@ CREATE TABLE fatura(
 	FOREIGN KEY (idLoja) REFERENCES loja(idLoja) ON DELETE RESTRICT
 );
 
+INSERT INTO fatura (idcliente, idcolaborador, idLoja) VALUES
+(15, 5, 1);
+
+/* ------------------------------------------------------------------------------------------------------------------------------- */
+
 CREATE TABLE linha_fatura(
 	idlinha INT PRIMARY KEY AUTO_INCREMENT,
 	idfat INT NOT NULL,
@@ -260,16 +344,12 @@ CREATE TABLE linha_fatura(
 	FOREIGN KEY (idProd) REFERENCES produto(idProd) ON DELETE RESTRICT
 );
 
-/* ------------------------------------------------------------------------------------------------------------------------------- */
-
-INSERT INTO fatura (idcliente, idcolaborador, idLoja) VALUES (15, 5, 1);
-
 INSERT INTO linha_fatura (idfat, idProd, quantidade, preco_unitario) VALUES
 (1, 1, 10, 0.16),
 (1, 18, 1, 5.51);
 
+/* ------------------------------------------------------------------------------------------------------------------------------- */
+
 UPDATE fatura
 SET valor_total = (SELECT SUM(quantidade * preco_unitario) FROM linha_fatura WHERE idfat = 1)
 WHERE idfat = 1;
-
-/* ------------------------------------------------------------------------------------------------------------------------------- */
