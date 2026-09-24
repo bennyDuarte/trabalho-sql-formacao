@@ -294,14 +294,16 @@ INSERT INTO pessoa (nome, datanascimento, rua, localidade, codigo_postal, distri
 
 CREATE TABLE colaborador(
 	idpessoa INT PRIMARY KEY,
+	idLoja INT NOT NULL,
 	cargo VARCHAR(50) DEFAULT 'Funcionário',
 	data_admissao DATE DEFAULT (CURRENT_DATE),
-	FOREIGN KEY (idpessoa) REFERENCES pessoa(idpessoa) ON DELETE CASCADE
+	FOREIGN KEY (idpessoa) REFERENCES pessoa(idpessoa) ON DELETE CASCADE,
+	FOREIGN KEY (idLoja) REFERENCES loja(idLoja) ON DELETE CASCADE
 );
 
-INSERT INTO colaborador (idpessoa, cargo) VALUES
-(5, 'Gerente de loja'),
-(8, 'Administrador de IT');
+INSERT INTO colaborador (idpessoa,idLoja, cargo) VALUES
+(5, 1, 'Gerente de loja'),
+(8, 1, 'Administrador de IT');
 
 /* ------------------------------------------------------------------------------------------------------------------------------- */
 
@@ -321,12 +323,10 @@ CREATE TABLE fatura(
 	idfat INT PRIMARY KEY AUTO_INCREMENT,
 	idcliente INT NOT NULL,
 	idcolaborador INT NOT NULL,
-	idLoja INT NOT NULL,
 	data_emissao DATETIME DEFAULT CURRENT_TIMESTAMP,
 	valor_total DECIMAL(10,2) DEFAULT 0.00,
 	FOREIGN KEY (idcliente) REFERENCES cliente(idpessoa) ON DELETE RESTRICT,
 	FOREIGN KEY (idcolaborador) REFERENCES colaborador(idpessoa) ON DELETE RESTRICT,
-	FOREIGN KEY (idLoja) REFERENCES loja(idLoja) ON DELETE RESTRICT
 );
 
 INSERT INTO fatura (idcliente, idcolaborador, idLoja) VALUES
