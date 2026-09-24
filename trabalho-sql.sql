@@ -326,7 +326,7 @@ CREATE TABLE fatura(
 	data_emissao DATETIME DEFAULT CURRENT_TIMESTAMP,
 	valor_total DECIMAL(10,2) DEFAULT 0.00,
 	FOREIGN KEY (idcliente) REFERENCES cliente(idpessoa) ON DELETE RESTRICT,
-	FOREIGN KEY (idcolaborador) REFERENCES colaborador(idpessoa) ON DELETE RESTRICT,
+	FOREIGN KEY (idcolaborador) REFERENCES colaborador(idpessoa) ON DELETE RESTRICT
 );
 
 INSERT INTO fatura (idcliente, idcolaborador) VALUES
