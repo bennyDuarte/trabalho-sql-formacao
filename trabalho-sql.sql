@@ -329,8 +329,8 @@ CREATE TABLE fatura(
 	FOREIGN KEY (idcolaborador) REFERENCES colaborador(idpessoa) ON DELETE RESTRICT,
 );
 
-INSERT INTO fatura (idcliente, idcolaborador, idLoja) VALUES
-(15, 5, 1);
+INSERT INTO fatura (idcliente, idcolaborador) VALUES
+(15, 5);
 
 /* ------------------------------------------------------------------------------------------------------------------------------- */
 
