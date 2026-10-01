@@ -1,0 +1,33 @@
+titulo
+
+#1
+##2
+###3
+lista
+-ItemA
+-ItemB
+-ItemB.1
+Tabelas
+|Nome|Versao|Estado|
+|:----|:----|----|
+|MySQL|8.0|ok|
+|Xmpp|8.0|OK|
+
+|Nome|Versao|
+| MySQL|8.0|
+|XAMPP|8.2|
+
+SELECT*FROM utilizadores;
+|Nome|Versao|
+|MySQL|8.0|
+|XAMPP|8.2|
+
+Configracao
+DATABASE_NAME=my-DATABASE_db
+DATABASE_USENAME=root
+BATABASE_PASSWORD=1234
+
+
+
+
+
